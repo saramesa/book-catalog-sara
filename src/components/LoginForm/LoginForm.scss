@@ -1,0 +1,24 @@
+.login__form-row {
+	text-align: center;
+    padding: 1em;
+    margin-top: 3em;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url("../../assets/background-book.jpg");
+}
+
+.login__form-container {
+	background-color: white;
+	top: 30%;
+	padding: 2em;
+	border-radius: 15px;
+}
+
+
+.login__form-button {
+	background-color: #00bcd4;
+	border: 1px solid #00bcd4;
+}
