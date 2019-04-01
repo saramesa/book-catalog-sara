@@ -5,10 +5,11 @@ import { HashRouter } from 'react-router-dom';
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 import './index.scss';
 import App from './components/App';
+import Login from './components/LoginForm'
 const routing = (
   <Router>
     <div>
-      <Route path="/" component={App} />
+      <Login />
     </div>
   </Router>
 )

@@ -1,13 +1,13 @@
 .login__form-row {
 	text-align: center;
     padding: 1em;
-    margin-top: 3em;
     position: absolute;
     top: 0;
     bottom: 0;
+    padding-top: 28vh;
     left: 0;
     right: 0;
-    background-image: url("../../assets/background-book.jpg");
+    background: url("../../assets/background-book.jpg") no-repeat center center fixed;
 }
 
 .login__form-container {
@@ -21,4 +21,8 @@
 .login__form-button {
 	background-color: #00bcd4;
 	border: 1px solid #00bcd4;
+}
+
+.login__form-container {
+    
 }
