@@ -7,14 +7,13 @@ import Route from 'react-router-dom/Route';
 import './index.scss';
 import App from './components/App';
 import Login from './components/LoginForm'
+import Catalog from './components/Catalog'
+
 const routing = (
   <Router>
   	<div>
         <Route path="/" exact strict component={Login} />
-		<Route path="/main" exact render={
-			()=> {
-				return (<div>MAIN</div>)
-			}} />
+		<Route path="/main" exact component={Catalog} />
 	</div>
   </Router>
 )

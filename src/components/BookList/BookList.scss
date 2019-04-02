@@ -1,0 +1,38 @@
+.book__card-row {
+	margin-top: 1em; 
+}
+
+.book__card-container {
+	padding: 1em;
+    border: 1px solid black;
+    border-radius: 15px;
+}
+
+.book__card-image-container {
+	height: 150px;
+}
+
+.book__card-image {
+	height: 150px;
+}
+
+.book__card-labels {
+	margin-top: 1em;
+    padding-top: 0.3em;
+    border-top: 1px solid black;
+}
+
+.list-group {
+	float: left;
+	margin: 1em;
+}
+
+.list-group-item {
+	border-radius: 15px !important;;
+    border: 1px solid#2195BA;
+}
+
+.book-card-title {
+	font-weight: bold;
+	padding-top: 0.4em;
+}
