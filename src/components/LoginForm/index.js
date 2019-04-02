@@ -17,40 +17,38 @@ import App from '../../components/App'
 import './LoginForm.scss'
 
 class LoginForm extends Component {
-constructor(props){
-  	super(props);
-  	this.state={
-  		username:'',
-  		password:''
-  	}
+  constructor(props){
+    super(props);
+    this.state={
+    	username:'',
+    	password:''
+    }
+    this.onSubmitForm = this.onSubmitForm.bind(this);
+  }
 
-  	this.onSubmitForm = this.onSubmitForm.bind(this);
-}
-
-  	onSubmitForm(e) {
+  onSubmitForm(e) {
       console.log('this.state ', this.state)
-  		let payload={
- 			  "email":this.state.username,
- 			  "password":this.state.password
- 		  }
-      let result = AuthenticateAPI.onAuthenticate(payload)
-      if (result) {
+    let payload={
+ 		  "email":this.state.username,
+ 		  "password":this.state.password
+ 		}
+    let result = AuthenticateAPI.onAuthenticate(payload)
+    if (result) {
         //redirigir a la siguiente pantalla
-        console.log('redirige a la siguiente pantalla')
-        return <Redirect to="/App" />;
-      } else {
-        console.log('usuario no existe')        
-      }
+      console.log('redirige a la siguiente pantalla')
+      return (<Redirect to="/main" />);
+    } else {
+      console.log('usuario no existe')        
+    }
 
 /* 		let uploadScreen=[];
  		uploadScreen.push(<UploadScreen appContext={self.props.appContext}/>)
  		self.props.appContext.setState({loginPage:[],uploadScreen:uploadScreen})*/
   		
-  	}
+  }
 
 	render() {
 	    return (
-        
         <Row className="login__form-row">
         <div className="login__form-row-blur"></div>
         <Col></Col>
