@@ -3,7 +3,8 @@ import './BookList.scss';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
-import ListGroup from 'react-bootstrap/ListGroup'
+import ListGroup from 'react-bootstrap/ListGroup';
+import Badge from 'react-bootstrap/Badge';
 import Loader from '../../components/Loader';
 
 class BookList extends Component {
@@ -51,7 +52,7 @@ class BookList extends Component {
     return (
     <div>
       {Object.keys(items).map(item => (
-      <ListGroup>
+      <ListGroup key={item}>
       <ListGroup.Item>
           <Row>
             <Col xs={6} md={4} className="book__card-image-container">
@@ -60,16 +61,16 @@ class BookList extends Component {
           </Row>
           <Row>
             <Col>
-              <div key={item}>
-                <div className="book-card-title">{items[item].title}</div>
-              </div>
+              <div className="book-card-title">{items[item].title}</div>
             </Col>
           </Row>
           <Row>
             <Col>{items[item].author}</Col>
           </Row>  
           <Row className="book__card-labels">
-            <Col>Labels</Col>
+            <Col>
+              <Badge variant="secondary">{items[item].genre}</Badge>
+            </Col>
           </Row>    
         </ListGroup.Item>
         </ListGroup>        
