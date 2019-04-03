@@ -39,12 +39,7 @@ class LoginForm extends Component {
       return (<Redirect to="/main" />);
     } else {
       console.log('usuario no existe')        
-    }
-
-/* 		let uploadScreen=[];
- 		uploadScreen.push(<UploadScreen appContext={self.props.appContext}/>)
- 		self.props.appContext.setState({loginPage:[],uploadScreen:uploadScreen})*/
-  		
+    }  		
   }
 
 	render() {

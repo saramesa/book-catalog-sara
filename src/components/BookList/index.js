@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Badge from 'react-bootstrap/Badge';
+import * as BookCatalogAPI from '../../api/bookCatalogApi';
 import Loader from '../../components/Loader';
 
 class BookList extends Component {
@@ -13,73 +14,70 @@ class BookList extends Component {
     this.state = {
       error: null,
       isLoaded: false,
-      items: []
+      books: []
     };
+    //this.handleFilterClick = this.handleFilterClick.bind(this);
   }
 
-      componentDidMount() {
-    fetch("https://cors-anywhere.herokuapp.com/https://saramesa-book-catalog.firebaseapp.com/api/catalog")
-      .then(res => res.json())
-      .then(
-        (result) => {
+  componentDidMount() {
+    BookCatalogAPI.getBooksCatalog()
+   .then(
+      (result) => {
+        this.setState({
+          isLoaded: true,
+          books: result.catalog
+         });
+      }, (error) => {
           this.setState({
             isLoaded: true,
-            items: result.catalog
-          });
-        },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      )
+            message: 'No Data Found'
+          })
+      }
+    )
   }
 
   render() {
-    const { error, isLoaded, items } = this.state;
-    console.log('this.state ', this.state)
-    console.log('items ', items)
+    const { error, isLoaded, books } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
       return <Loader />
     } else {
-    
-    return (
-    <div>
-      {Object.keys(items).map(item => (
-      <ListGroup key={item}>
-      <ListGroup.Item>
-          <Row>
-            <Col xs={6} md={4} className="book__card-image-container">
-              <Image className="book__card-image" alt="image" rounded src={items[item].image} />
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <div className="book-card-title">{items[item].title}</div>
-            </Col>
-          </Row>
-          <Row>
-            <Col>{items[item].author}</Col>
-          </Row>  
-          <Row className="book__card-labels">
-            <Col>
-              <Badge variant="secondary">{items[item].genre}</Badge>
-            </Col>
-          </Row>    
-        </ListGroup.Item>
-        </ListGroup>        
-      ))}
-    </div>
+      return (
+        <div>
+          {Object.keys(books).map(book => (
+          <ListGroup key={book}>
+            <ListGroup.Item>
+                <Row>
+                  <Col xs={6} md={4} className="book__card-image-container">
+                    <Image className="book__card-image" alt="image" rounded src={books[book].image} />
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <div className="book-card-title">{books[book].title}</div>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>{books[book].author}</Col>
+                </Row>  
+                <Row>
+                  <Col>
+                    <Badge variant="secondary">{books[book].genre}</Badge>
+                  </Col>
+                </Row>    
+              </ListGroup.Item>
+            </ListGroup>        
+          ))}
+        </div>
       );
     }
   }
-}
 
+
+  handleFilterClick(e) {
+    console.log('e.target.id ', e.target.id)
+  }
+}
 
 export default BookList;

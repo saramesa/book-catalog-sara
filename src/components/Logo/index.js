@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import logo from '../../assets/beezy.jpg';
 import './Logo.scss';
 
-
 const Logo = ({ size }) => {
 	return (
 		<div className={`logo__container ${size}`}>
