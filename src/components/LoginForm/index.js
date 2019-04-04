@@ -1,19 +1,11 @@
 import React, { Component } from 'react';
 import * as AuthenticateAPI from '../../api/userApi';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect,
-  withRouter
-} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import Row from 'react-bootstrap/Row';
-import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
-import App from '../../components/App'
 import './LoginForm.scss'
 
 class LoginForm extends Component {
@@ -36,7 +28,7 @@ class LoginForm extends Component {
     if (result) {
         //redirigir a la siguiente pantalla
       console.log('redirige a la siguiente pantalla')
-      return (<Redirect to="/main" />);
+      return (<Redirect to="/catalog" />);
     } else {
       console.log('usuario no existe')        
     }  		

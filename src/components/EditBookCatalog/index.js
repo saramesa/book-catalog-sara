@@ -1,9 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
 class EditBookCatalog extends Component {
-  constructor(props) {
-    super(props)
-  }
+
   render() {
     return (
       <div>Edit Book Catalog</div>

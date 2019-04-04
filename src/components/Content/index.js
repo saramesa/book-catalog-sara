@@ -1,11 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import * as BookCatalogAPI from '../../api/bookCatalogApi';
 import { Route, Switch } from 'react-router-dom';
-import Loader from '../../components/Loader';
 import Filters from '../../components/Filters';
 import BookList from '../../components/BookList';
 import EditBookCatalog from '../../components/EditBookCatalog';
-
 
 class Content extends Component {
 	constructor(props) {
@@ -19,13 +16,18 @@ class Content extends Component {
 	render() {
 		const {
 			books,
-			isLoaded
+			isLoaded,
+			error
 		} = this.props;
 		console.log('this.props ', this.props)
 		const catalogContent = (
 			<Fragment>
 				<Filters />
-				<BookList />
+				<BookList 
+					books={books} 
+					isLoaded={isLoaded}
+					error={error}
+				/>
 			</Fragment>
 		);
 		return (
@@ -33,8 +35,8 @@ class Content extends Component {
 				<Switch>
 					<Route
 						exact
-						path="/main"
-						render={() => isLoaded ? <Loader /> : catalogContent}
+						path="/catalog"
+						render={() => catalogContent}
 					/>
 					<Route
 						path="/edit"

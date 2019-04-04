@@ -3,14 +3,13 @@ import './App.scss';
 import * as BookCatalogAPI from '../../api/bookCatalogApi';
 import Header from '../Header';
 import Content from '../Content'
-import LoginForm from '../LoginForm';
 
 class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			isLoaded: false,
-      		books: []
+      		books: [],
 		}
 	}
 
@@ -34,13 +33,17 @@ class App extends Component {
 	render() {
 		const {
 			books,
-			isLoaded
+			isLoaded,
+			error
 		} = this.state;
-		console.log('entra en APP')
 		return (
 			<div className="App">
 				<Header />
-				<Content books={books}/>
+				<Content 
+					books={books} 
+					isLoaded={isLoaded}
+					error={error}
+				/>
 			</div>
 		);
 	}

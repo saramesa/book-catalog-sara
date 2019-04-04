@@ -5,9 +5,9 @@ import MenuItem from '../../components/MenuItem';
 class Menu extends Component {
 	render() {
 		return (
-			<nav>
+			<nav className="nav-menu">
 				<ul className="menu-list">
-					<MenuItem title="Catalog" url="/main" />
+					<MenuItem title="Catalog" url="/catalog" />
 	          		<MenuItem title="Edit" url="/edit" />
           		</ul>
 			</nav>
