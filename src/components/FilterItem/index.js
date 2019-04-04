@@ -18,10 +18,10 @@ class FilterItem extends Component {
   	}
 
 	render() {
-		const {handleFilterClick} = this.props;
+		const {handleFilterChange} = this.props;
 	    return (
 	    	this.state.genres.map(genre => (
-		    	<span className="filter-item" id={genre} onClick={handleFilterClick}>{genre}</span>
+		    	<span className="filter-item" id={genre} onClick={handleFilterChange}>{genre}</span>
 		 	))
 	    );
 	}

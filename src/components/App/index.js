@@ -10,7 +10,9 @@ class App extends Component {
 		this.state = {
 			isLoaded: false,
       		books: [],
+      		error: false
 		}
+		this.handleFilterChange = this.handleFilterChange.bind(this);
 	}
 
 	componentDidMount() {
@@ -34,7 +36,8 @@ class App extends Component {
 		const {
 			books,
 			isLoaded,
-			error
+			error,
+			handleFilterChange
 		} = this.state;
 		return (
 			<div className="App">
@@ -43,9 +46,15 @@ class App extends Component {
 					books={books} 
 					isLoaded={isLoaded}
 					error={error}
+					handleFilterChange={this.handleFilterChange}
 				/>
 			</div>
 		);
+	}
+
+	handleFilterChange(e) {
+		let id = e.target.id;
+		console.log('handleFilterChange ', e.target.id)
 	}
 }
 

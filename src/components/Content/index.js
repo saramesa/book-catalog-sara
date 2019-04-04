@@ -12,21 +12,22 @@ class Content extends Component {
       		books: []
 		}
 	}
-
 	render() {
 		const {
 			books,
 			isLoaded,
-			error
+			error,
+			handleFilterChange
 		} = this.props;
 		console.log('this.props ', this.props)
 		const catalogContent = (
 			<Fragment>
-				<Filters />
+				<Filters handleFilterChange={handleFilterChange} />
 				<BookList 
 					books={books} 
 					isLoaded={isLoaded}
 					error={error}
+
 				/>
 			</Fragment>
 		);

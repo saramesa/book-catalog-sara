@@ -12,10 +12,10 @@ class Filters extends Component {
   	}
 
 	render() { 
-		const {handleFilterClick} = this.props;
+		const {handleFilterChange} = this.props;
 	    return (
 	    	<div className="filters-container">
-	    		<FilterItem handleFilterClick={handleFilterClick}/>
+	    		<FilterItem handleFilterChange={handleFilterChange}/>
 		 	</div>
 	    );
 	}
