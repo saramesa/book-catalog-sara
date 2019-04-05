@@ -6,7 +6,7 @@ class FilterItem extends Component {
 	constructor(){
         super();
         this.state = {
-            genres: []
+            genres: [],
         }
     }
 
@@ -18,10 +18,12 @@ class FilterItem extends Component {
   	}
 
 	render() {
-		const {handleFilterChange} = this.props;
+		
+		const {handleFilterChange, filtersChecked, bgColor} = this.props;
+		console.log('filtersChecked ', filtersChecked)
 	    return (
 	    	this.state.genres.map(genre => (
-		    	<span className="filter-item" id={genre} onClick={handleFilterChange}>{genre}</span>
+		    	<span className="filter-item" style={{backgroundColor:this.props.bgColor}} id={genre} onClick={handleFilterChange}>{genre}</span>
 		 	))
 	    );
 	}

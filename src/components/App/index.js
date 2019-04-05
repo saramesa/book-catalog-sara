@@ -10,9 +10,12 @@ class App extends Component {
 		this.state = {
 			isLoaded: false,
       		books: [],
-      		error: false
+      		error: false,
+      		filtersChecked: [],
+      		bgColor: 'white'
 		}
 		this.handleFilterChange = this.handleFilterChange.bind(this);
+		this.changeFilterBtnColor = this.changeFilterBtnColor.bind(this);
 	}
 
 	componentDidMount() {
@@ -37,7 +40,9 @@ class App extends Component {
 			books,
 			isLoaded,
 			error,
-			handleFilterChange
+			handleFilterChange,
+			filtersChecked,
+			bgColor
 		} = this.state;
 		return (
 			<div className="App">
@@ -47,6 +52,8 @@ class App extends Component {
 					isLoaded={isLoaded}
 					error={error}
 					handleFilterChange={this.handleFilterChange}
+					filtersChecked={filtersChecked}
+					bgColor={bgColor}
 				/>
 			</div>
 		);
@@ -54,7 +61,18 @@ class App extends Component {
 
 	handleFilterChange(e) {
 		let id = e.target.id;
-		console.log('handleFilterChange ', e.target.id)
+		//this.changeFilterBtnColor()
+		this.state.filtersChecked.push(id)
+   	 	//const filtersChecked = items.filter(item => item !== valueToRemove)
+   	 	console.log('this.props.filtersChecked ', this.state.filtersChecked)
+		let filteredBooks = Object.keys(this.state.books).filter(index => this.state.books[index].genre == id);
+	}
+
+
+	changeFilterBtnColor() {
+    	this.setState({
+      		bgColor: 'blue'
+   	 	})
 	}
 }
 

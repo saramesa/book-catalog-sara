@@ -17,12 +17,18 @@ class Content extends Component {
 			books,
 			isLoaded,
 			error,
-			handleFilterChange
+			handleFilterChange,
+			filtersChecked,
+			bgColor
 		} = this.props;
 		console.log('this.props ', this.props)
 		const catalogContent = (
 			<Fragment>
-				<Filters handleFilterChange={handleFilterChange} />
+				<Filters 
+					handleFilterChange={handleFilterChange} 
+					filtersChecked={filtersChecked}
+					bgColor={bgColor}
+				/>
 				<BookList 
 					books={books} 
 					isLoaded={isLoaded}
@@ -43,7 +49,9 @@ class Content extends Component {
 						path="/edit"
 						render={() => {
 							return (
-								<EditBookCatalog />
+								<EditBookCatalog 
+									books={books} 
+								/>
 							);
 						}}
 					/>
