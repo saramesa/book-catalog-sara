@@ -3,9 +3,8 @@ import './BookList.scss';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
-import ListGroup from 'react-bootstrap/ListGroup';
-import Badge from 'react-bootstrap/Badge';
 import Loader from '../../components/Loader';
+import BadgeGenre from '../../components/BadgeGenre';
 
 class BookList extends Component {
 
@@ -15,6 +14,7 @@ class BookList extends Component {
       isLoaded,
       error
     } = this.props;
+    console.log('this.props.books en BookList ', this.props.books)
     //const { error, isLoaded, books } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
@@ -22,10 +22,11 @@ class BookList extends Component {
       return <Loader />
     } else {
       return (
-        <div>
+      <Row>
+        <Col className="col-md-2"></Col>
+        <Col className="col-md-8"><ul className="book-list">
           {Object.keys(books).map(book => (
-          <ListGroup key={book}>
-            <ListGroup.Item>
+          <li className="book-list-item" key={book}>
                 <Row>
                   <Col xs={6} md={4} className="book__card-image-container">
                     <Image className="book__card-image" alt="image" rounded src={books[book].image} />
@@ -38,16 +39,21 @@ class BookList extends Component {
                 </Row>
                 <Row>
                   <Col>{books[book].author}</Col>
-                </Row>  
+                </Row>
+                <Row>
+                  <Col className="book-date">{books[book].date}</Col>
+                </Row>   
                 <Row>
                   <Col>
-                    <Badge variant="secondary">{books[book].genre}</Badge>
+                    <BadgeGenre variant="secondary" genres={books[book].genre}></BadgeGenre>
                   </Col>
                 </Row>    
-              </ListGroup.Item>
-            </ListGroup>        
+            </li>        
           ))}
-        </div>
+        </ul></Col>
+        <Col className="col-md-2"></Col>
+      </Row>
+        
       );
     }
   }

@@ -62,7 +62,13 @@ class App extends Component {
 	handleFilterChange(e) {
 		let id = e.target.id;
 		//this.changeFilterBtnColor()
-		this.state.filtersChecked.push(id)
+		if (!this.state.filtersChecked.includes(id)) {
+			this.state.filtersChecked.push(id)
+		} else {
+			const index = this.state.filtersChecked.indexOf(id);
+			console.log('index ', index);
+			this.state.filtersChecked.splice(index, 1)
+		}		
    	 	//const filtersChecked = items.filter(item => item !== valueToRemove)
    	 	console.log('this.props.filtersChecked ', this.state.filtersChecked)
 		let filteredBooks = Object.keys(this.state.books).filter(index => this.state.books[index].genre == id);

@@ -31,3 +31,21 @@
 	font-weight: bold;
 	padding-top: 0.4em;
 }
+
+.book-list {
+	display: grid;
+    justify-content: center;
+    list-style-type: none;
+    align-content: center;
+    align-items: center;
+}
+
+.book-list-item {
+	float: left;
+	margin: 1em;
+	padding: 1em;
+}
+
+.book-date {
+	font-size: 12px;
+}

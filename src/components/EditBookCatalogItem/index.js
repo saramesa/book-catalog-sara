@@ -14,12 +14,18 @@ class EditBookCatalogItem extends Component {
       	{Object.keys(books).map(book => (
       		<Row className="edit-container">
       			<Col className="col-3">
-      				<img className="image-edit-book" alt="image "src={books[book].image}/>
+      				<img className="image-edit-book" alt="book-front" src={books[book].image}/>
       			</Col>
-      			<Col className="col-7"><span className="title-edit-book">{books[book].title}</span></Col>
-      			<Col className="col-2">Delete</Col>
-	      		
-	      			
+      			<Col className="col-8">
+      				<label>Title:</label>
+      				<input className="title-edit-book" type="text" value={books[book].title}></input>
+      				<label>Price:</label>
+      				<input className="title-edit-book" type="text" value={books[book].price}></input>
+      				<label>Genres:</label>
+      			</Col>
+      			<Col className="col-1 fa-times-container">
+      				<i className="far fa-times-circle fa-times-custom"></i>
+      			</Col>     			
 			</Row>
       	))} 
       	</li>

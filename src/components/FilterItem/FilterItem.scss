@@ -24,3 +24,13 @@
 .filter-item:hover {
 	box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px;
 }
+
+.filter-clicked {
+    background-color: #2195BA;
+    color: white;
+}
+
+.filter-not-clicked {
+    background-color: white;
+    color: #44505B;
+}

@@ -3,14 +3,22 @@
 }
 
 .title-edit-book {
-	height: 150px;
-	padding: 1em;
-	vertical-align: top;
+	width: 100%;
+	border-radius: 8px;
 }
 
 .edit-container {
-	padding: 1em 1em 1em 0em;
+	padding: 1em 0em 1em 0em;
 	margin: 1em;
 	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.03), 0 1px 0 rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
 	border-radius: 8px;
+}
+
+.fa-times-container {
+	text-align: right;
+	padding-left: 0;
+}
+
+.fa-times-custom {
+	cursor: pointer;
 }
