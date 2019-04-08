@@ -7,7 +7,8 @@ class Filters extends Component {
 		const {
 			handleFilterChange,
 			filtersChecked, 
-			bgColor
+			bgColor,
+			isFilterClicked
 		} = this.props;
 	    return (
 	    	<div className="filters-container">
@@ -15,6 +16,7 @@ class Filters extends Component {
 	    			handleFilterChange={handleFilterChange}
 	    			filtersChecked={filtersChecked}
 	    			bgColor={bgColor}
+	    			isFilterClicked={isFilterClicked}
 	    		/>
 		 	</div>
 	    );

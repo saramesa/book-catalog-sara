@@ -19,7 +19,8 @@ class Content extends Component {
 			error,
 			handleFilterChange,
 			filtersChecked,
-			bgColor
+			bgColor,
+			isFilterClicked
 		} = this.props;
 		console.log('this.props ', this.props)
 		const catalogContent = (
@@ -28,6 +29,7 @@ class Content extends Component {
 					handleFilterChange={handleFilterChange} 
 					filtersChecked={filtersChecked}
 					bgColor={bgColor}
+					isFilterClicked={isFilterClicked}
 				/>
 				<BookList 
 					books={books} 

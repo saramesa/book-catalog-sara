@@ -12,7 +12,8 @@ class App extends Component {
       		books: [],
       		error: false,
       		filtersChecked: [],
-      		bgColor: 'white'
+      		bgColor: 'white',
+      		isFilterClicked: false
 		}
 		this.handleFilterChange = this.handleFilterChange.bind(this);
 		this.changeFilterBtnColor = this.changeFilterBtnColor.bind(this);
@@ -42,7 +43,8 @@ class App extends Component {
 			error,
 			handleFilterChange,
 			filtersChecked,
-			bgColor
+			bgColor,
+			isFilterClicked
 		} = this.state;
 		return (
 			<div className="App">
@@ -54,6 +56,7 @@ class App extends Component {
 					handleFilterChange={this.handleFilterChange}
 					filtersChecked={filtersChecked}
 					bgColor={bgColor}
+					isFilterClicked={isFilterClicked}
 				/>
 			</div>
 		);
@@ -66,7 +69,6 @@ class App extends Component {
 			this.state.filtersChecked.push(id)
 		} else {
 			const index = this.state.filtersChecked.indexOf(id);
-			console.log('index ', index);
 			this.state.filtersChecked.splice(index, 1)
 		}		
    	 	//const filtersChecked = items.filter(item => item !== valueToRemove)

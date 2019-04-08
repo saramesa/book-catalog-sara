@@ -8,7 +8,6 @@ class BadgeGenre extends Component {
     const {
       genres,
     } = this.props;
-    console.log('genres en BadgeGenre ', genres)
     return (
       genres.map(genre => (
         <Badge variant="secondary" className="badge-genre">{genre}</Badge>
