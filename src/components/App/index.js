@@ -17,6 +17,7 @@ class App extends Component {
 		}
 		this.handleFilterChange = this.handleFilterChange.bind(this);
 		this.changeFilterBtnColor = this.changeFilterBtnColor.bind(this);
+		this.filteredBooks = this.filteredBooks.bind(this);
 	}
 
 	componentDidMount() {
@@ -63,6 +64,7 @@ class App extends Component {
 	}
 
 	handleFilterChange(e) {
+		console.log('this.state.isFilterClicked ', this.state.isFilterClicked)
 		let id = e.target.id;
 		//this.changeFilterBtnColor()
 		if (!this.state.filtersChecked.includes(id)) {
@@ -71,11 +73,15 @@ class App extends Component {
 			const index = this.state.filtersChecked.indexOf(id);
 			this.state.filtersChecked.splice(index, 1)
 		}		
-   	 	//const filtersChecked = items.filter(item => item !== valueToRemove)
-   	 	console.log('this.props.filtersChecked ', this.state.filtersChecked)
-		let filteredBooks = Object.keys(this.state.books).filter(index => this.state.books[index].genre == id);
+		Object.keys(this.state.books).filter(index => this.filteredBooks(this.state.books[index]));
 	}
 
+	filteredBooks(book) {
+		let isGenrePresent = book.genre.every( genre => this.state.filtersChecked.includes(genre));
+		if (isGenrePresent) {
+			console.log('book ', book)
+		}
+	}
 
 	changeFilterBtnColor() {
     	this.setState({
