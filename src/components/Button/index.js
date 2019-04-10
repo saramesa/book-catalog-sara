@@ -7,7 +7,7 @@ class Button extends Component {
 	    return (
 	    	<button className="filter-item">
 	    		<span>Add new book</span>
-	    		<span className="add-new-book-icon"><i class="fas fa-plus-circle"></i></span>
+	    		<span className="add-new-book-icon"><i className="fas fa-plus-circle"></i></span>
 	    	</button>
 	    );
     }

@@ -10,6 +10,7 @@ class App extends Component {
 		this.state = {
 			isLoaded: false,
       		books: [],
+      		originalBooks: [],
       		error: false,
       		filtersChecked: [],
       		bgColor: 'white',
@@ -18,15 +19,18 @@ class App extends Component {
 		this.handleFilterChange = this.handleFilterChange.bind(this);
 		this.changeFilterBtnColor = this.changeFilterBtnColor.bind(this);
 		this.filteredBooks = this.filteredBooks.bind(this);
+		this.mapIntoArray = this.mapIntoArray.bind(this)
 	}
 
 	componentDidMount() {
 	    BookCatalogAPI.getBooksCatalog()
 	   .then(
 	      (result) => {
+	      	console.log('result ', result)
 	        this.setState({
 	          isLoaded: true,
-	          books: result.catalog
+	          books: this.mapIntoArray(result.catalog),
+	          originalBooks: this.mapIntoArray(result.catalog)
 	         });
 	      }, (error) => {
 	          this.setState({
@@ -35,6 +39,12 @@ class App extends Component {
 	          })
 	      }
 	    )
+  	}
+
+  	mapIntoArray(result) {
+  		let array = []
+  		Object.keys(result).filter(index => array.push(result[index]))
+  		return array
   	}
 
 	render() {
@@ -66,19 +76,48 @@ class App extends Component {
 	handleFilterChange(e) {
 		console.log('this.state.isFilterClicked ', this.state.isFilterClicked)
 		let id = e.target.id;
+		let array = [];
 		//this.changeFilterBtnColor()
 		if (!this.state.filtersChecked.includes(id)) {
 			this.state.filtersChecked.push(id)
 		} else {
 			const index = this.state.filtersChecked.indexOf(id);
 			this.state.filtersChecked.splice(index, 1)
-		}		
-		Object.keys(this.state.books).filter(index => this.filteredBooks(this.state.books[index]));
+		}
+		console.log('this.state.filtersChecked', this.state.filtersChecked.length	)	
+		this.state.originalBooks.filter(book => {
+			if(book.genre.every( genre => {
+				if(this.state.filtersChecked.length !== 0 && this.state.filtersChecked.includes(genre)) {
+					console.log('book.genre === id ', book)
+					array.push(book);
+				}})) {
+				
+			}
+		})
+		
+
+			//this.filteredBooks(this.state.books[index],array));
+/*		let a = Object.keys(this.state.books).filter(index => 
+			this.state.books[index].genre.every(genre => 
+				this.state.filtersChecked.includes(genre))
+			);*/
+		console.log('array ', array)
+		if (array.length != 0) {
+			this.setState({
+      		books: array
+   	 		})
+		} else {
+			this.setState({
+      		books: this.state.originalBooks
+   	 		})
+		}
+		
 	}
 
-	filteredBooks(book) {
+	filteredBooks(book, array) {
 		let isGenrePresent = book.genre.every( genre => this.state.filtersChecked.includes(genre));
 		if (isGenrePresent) {
+			array.push(book);
 			console.log('book ', book)
 		}
 	}

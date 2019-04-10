@@ -25,27 +25,27 @@ class BookList extends Component {
       <Row>
         <Col className="col-md-2"></Col>
         <Col className="col-md-8"><ul className="book-list">
-          {Object.keys(books).map(book => (
-          <li className="book-list-item" key={book}>
+          {books.map(book => (
+          <li className="book-list-item" key={book.id}>
                 <Row>
                   <Col xs={6} md={4} className="book__card-image-container">
-                    <Image className="book__card-image" alt="image" rounded src={books[book].image} />
+                    <Image className="book__card-image" alt="image" rounded src={book.image} />
                   </Col>
                 </Row>
                 <Row>
                   <Col>
-                    <div className="book-card-title">{books[book].title}</div>
+                    <div className="book-card-title">{book.title}</div>
                   </Col>
                 </Row>
                 <Row>
-                  <Col>{books[book].author}</Col>
+                  <Col>{book.author}</Col>
                 </Row>
                 <Row>
-                  <Col className="book-date">{books[book].date}</Col>
+                  <Col className="book-date">{book.date}</Col>
                 </Row>   
                 <Row>
                   <Col>
-                    <BadgeGenre variant="secondary" genres={books[book].genre}></BadgeGenre>
+                    <BadgeGenre variant="secondary" genres={book.genre}></BadgeGenre>
                   </Col>
                 </Row>    
             </li>        
