@@ -18,7 +18,6 @@ class App extends Component {
 		}
 		this.handleFilterChange = this.handleFilterChange.bind(this);
 		this.changeFilterBtnColor = this.changeFilterBtnColor.bind(this);
-		this.filteredBooks = this.filteredBooks.bind(this);
 		this.mapIntoArray = this.mapIntoArray.bind(this)
 	}
 
@@ -26,7 +25,6 @@ class App extends Component {
 	    BookCatalogAPI.getBooksCatalog()
 	   .then(
 	      (result) => {
-	      	console.log('result ', result)
 	        this.setState({
 	          isLoaded: true,
 	          books: this.mapIntoArray(result.catalog),
@@ -74,7 +72,6 @@ class App extends Component {
 	}
 
 	handleFilterChange(e) {
-		console.log('this.state.isFilterClicked ', this.state.isFilterClicked)
 		let id = e.target.id;
 		let array = [];
 		//this.changeFilterBtnColor()
@@ -84,24 +81,15 @@ class App extends Component {
 			const index = this.state.filtersChecked.indexOf(id);
 			this.state.filtersChecked.splice(index, 1)
 		}
-		console.log('this.state.filtersChecked', this.state.filtersChecked.length	)	
 		this.state.originalBooks.filter(book => {
 			if(book.genre.every( genre => {
 				if(this.state.filtersChecked.length !== 0 && this.state.filtersChecked.includes(genre)) {
-					console.log('book.genre === id ', book)
 					array.push(book);
 				}})) {
 				
 			}
 		})
 		
-
-			//this.filteredBooks(this.state.books[index],array));
-/*		let a = Object.keys(this.state.books).filter(index => 
-			this.state.books[index].genre.every(genre => 
-				this.state.filtersChecked.includes(genre))
-			);*/
-		console.log('array ', array)
 		if (array.length != 0) {
 			this.setState({
       		books: array
@@ -112,14 +100,6 @@ class App extends Component {
    	 		})
 		}
 		
-	}
-
-	filteredBooks(book, array) {
-		let isGenrePresent = book.genre.every( genre => this.state.filtersChecked.includes(genre));
-		if (isGenrePresent) {
-			array.push(book);
-			console.log('book ', book)
-		}
 	}
 
 	changeFilterBtnColor() {

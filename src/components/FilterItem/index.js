@@ -18,12 +18,13 @@ class FilterItem extends Component {
   	}
 
 	render() {
-		
 		const {handleFilterChange, filtersChecked, bgColor,isFilterClicked} = this.props;
-		console.log('isFilterClicked ', isFilterClicked)
+		// color:  this.props.filtersChecked.includes(genre) ? 'white' : '#44505B'
 	    return (
 	    	this.state.genres.map(genre => (
-		    	<span className="filter-item" style={{backgroundColor:this.props.bgColor}} id={genre} onClick={handleFilterChange}>{genre}</span>
+/*	    		const isClicked = this.props.filtersChecked.includes(genre);
+	    		console.log('isClicked ', isClicked)*/
+		    	<span className="filter-item" style={{backgroundColor: this.props.filtersChecked.includes(genre) ? '#2195BA' : 'white'}} id={genre} onClick={handleFilterChange}>{genre}</span>
 		 	))
 	    );
 	}

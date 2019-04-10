@@ -19,7 +19,6 @@ class LoginForm extends Component {
   }
 
   onSubmitForm(e) {
-      console.log('this.state ', this.state)
     let payload={
  		  "email":this.state.username,
  		  "password":this.state.password

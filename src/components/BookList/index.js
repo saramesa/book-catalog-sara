@@ -14,8 +14,7 @@ class BookList extends Component {
       isLoaded,
       error
     } = this.props;
-    console.log('this.props.books en BookList ', this.props.books)
-    //const { error, isLoaded, books } = this.state;
+
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
@@ -58,10 +57,6 @@ class BookList extends Component {
     }
   }
 
-
-  handleFilterClick(e) {
-    console.log('e.target.id ', e.target.id)
-  }
 }
 
 export default BookList;

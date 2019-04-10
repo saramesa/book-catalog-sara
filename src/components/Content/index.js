@@ -22,7 +22,6 @@ class Content extends Component {
 			bgColor,
 			isFilterClicked
 		} = this.props;
-		console.log('this.props ', this.props)
 		const catalogContent = (
 			<Fragment>
 				<Filters 
