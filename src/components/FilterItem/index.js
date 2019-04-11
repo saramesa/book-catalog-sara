@@ -18,7 +18,7 @@ class FilterItem extends Component {
   	}
 
 	render() {
-		const {handleFilterChange, filtersChecked, bgColor,isFilterClicked} = this.props;
+		const {handleFilterChange, filtersChecked} = this.props;
 		// color:  this.props.filtersChecked.includes(genre) ? 'white' : '#44505B'
 	    return (
 	    	this.state.genres.map(genre => (

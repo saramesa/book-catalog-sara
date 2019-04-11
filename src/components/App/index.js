@@ -13,11 +13,9 @@ class App extends Component {
       		originalBooks: [],
       		error: false,
       		filtersChecked: [],
-      		bgColor: 'white',
       		isFilterClicked: false
 		}
 		this.handleFilterChange = this.handleFilterChange.bind(this);
-		this.changeFilterBtnColor = this.changeFilterBtnColor.bind(this);
 		this.mapIntoArray = this.mapIntoArray.bind(this)
 	}
 
@@ -52,7 +50,6 @@ class App extends Component {
 			error,
 			handleFilterChange,
 			filtersChecked,
-			bgColor,
 			isFilterClicked
 		} = this.state;
 		return (
@@ -64,7 +61,6 @@ class App extends Component {
 					error={error}
 					handleFilterChange={this.handleFilterChange}
 					filtersChecked={filtersChecked}
-					bgColor={bgColor}
 					isFilterClicked={isFilterClicked}
 				/>
 			</div>
@@ -74,7 +70,6 @@ class App extends Component {
 	handleFilterChange(e) {
 		let id = e.target.id;
 		let array = [];
-		//this.changeFilterBtnColor()
 		if (!this.state.filtersChecked.includes(id)) {
 			this.state.filtersChecked.push(id)
 		} else {
@@ -90,7 +85,7 @@ class App extends Component {
 			}
 		})
 		
-		if (array.length != 0) {
+		if (array.length !== 0) {
 			this.setState({
       		books: array
    	 		})
@@ -100,12 +95,6 @@ class App extends Component {
    	 		})
 		}
 		
-	}
-
-	changeFilterBtnColor() {
-    	this.setState({
-      		bgColor: 'blue'
-   	 	})
 	}
 }
 
