@@ -8,7 +8,8 @@ class EditBookCatalogItem extends Component {
 
   render() {
   	const { 
-		books
+		books,
+    handleDeleteBook
 	} = this.props;
     return (
     	<li>
@@ -28,7 +29,7 @@ class EditBookCatalogItem extends Component {
                />
       			</Col>
       			<Col className="col-1 fa-times-container">
-      				<i className="far fa-times-circle fa-times-custom"></i>
+      				<i className="far fa-times-circle fa-times-custom" onClick={handleDeleteBook}></i>
       			</Col>     			
 			    </Row>
       	))} 

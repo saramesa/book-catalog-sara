@@ -18,6 +18,7 @@ class Content extends Component {
 			isLoaded,
 			error,
 			handleFilterChange,
+			handleDeleteBook,
 			filtersChecked,
 			isFilterClicked
 		} = this.props;
@@ -50,6 +51,7 @@ class Content extends Component {
 							return (
 								<EditBookCatalog 
 									books={books} 
+									handleDeleteBook={handleDeleteBook}
 								/>
 							);
 						}}

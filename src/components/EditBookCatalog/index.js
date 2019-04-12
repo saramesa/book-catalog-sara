@@ -8,7 +8,8 @@ import './EditBookCatalog.scss';
 class EditBookCatalog extends Component {
   	render() {
   		const { 
-			books
+			books,
+			handleDeleteBook
 		} = this.props;
 	    return (
 	    	<ul className="edit-book-catalog-container">
@@ -17,6 +18,7 @@ class EditBookCatalog extends Component {
 		    		<Col md={8}>
 		    			<div className="add-new-book-container"><Button/></div>
 			    		<EditBookCatalogItem
+			    			handleDeleteBook={handleDeleteBook}
 		      				books={books}
 		      			/>	
 	      			</Col>

@@ -13,10 +13,12 @@ class App extends Component {
       		originalBooks: [],
       		error: false,
       		filtersChecked: [],
-      		isFilterClicked: false
+      		isFilterClicked: false,
 		}
+
 		this.handleFilterChange = this.handleFilterChange.bind(this);
 		this.mapIntoArray = this.mapIntoArray.bind(this)
+		this.handleDeleteBook = this.handleDeleteBook.bind(this)
 	}
 
 	componentDidMount() {
@@ -49,6 +51,7 @@ class App extends Component {
 			isLoaded,
 			error,
 			handleFilterChange,
+			handleDeleteBook,
 			filtersChecked,
 			isFilterClicked
 		} = this.state;
@@ -60,6 +63,7 @@ class App extends Component {
 					isLoaded={isLoaded}
 					error={error}
 					handleFilterChange={this.handleFilterChange}
+					handleDeleteBook = {this.handleDeleteBook}
 					filtersChecked={filtersChecked}
 					isFilterClicked={isFilterClicked}
 				/>
@@ -87,13 +91,18 @@ class App extends Component {
 		
 		if (array.length !== 0) {
 			this.setState({
-      		books: array
+      			books: array
    	 		})
 		} else {
 			this.setState({
-      		books: this.state.originalBooks
+      			books: this.state.originalBooks
    	 		})
 		}
+	}
+
+	handleDeleteBook(e) {
+		console.log('delete book')
+		console.log('this.state.books ', this.state.books)
 		
 	}
 }
