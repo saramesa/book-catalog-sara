@@ -9,7 +9,7 @@ class InputGenre extends Component {
 	  } = this.props;
     return (
     	book.genre.map(genre => (
-      		<input className="title-edit-book" value={genre}></input>
+      		<input className="title-edit-book" defaultValue={genre} key={genre}/>
       	))
       );
     }

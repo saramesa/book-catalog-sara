@@ -9,7 +9,8 @@ class EditBookCatalog extends Component {
   	render() {
   		const { 
 			books,
-			handleDeleteBook
+			handleDeleteBook,
+			handleKeyUpEditBook
 		} = this.props;
 	    return (
 	    	<ul className="edit-book-catalog-container">
@@ -18,8 +19,9 @@ class EditBookCatalog extends Component {
 		    		<Col md={8}>
 		    			<div className="add-new-book-container"><Button/></div>
 			    		<EditBookCatalogItem
-			    			handleDeleteBook={handleDeleteBook}
-		      				books={books}
+			    			handleDeleteBook = {handleDeleteBook}
+			    			handleKeyUpEditBook = {handleKeyUpEditBook}
+		      				books = {books}
 		      			/>	
 	      			</Col>
 		    		<Col md={2}></Col>

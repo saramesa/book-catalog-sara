@@ -25,7 +25,7 @@ class BookList extends Component {
         <Col className="col-md-2"></Col>
         <Col className="col-md-8"><ul className="book-list">
           {books.map(book => (
-          <li className="book-list-item">
+          <li className="book-list-item" key={book.id}>
                 <Row>
                   <Col className="book__card-image-container">
                     <Image className="book__card-image" alt="image" rounded src={book.image} />

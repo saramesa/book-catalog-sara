@@ -19,6 +19,7 @@ class App extends Component {
 		this.handleFilterChange = this.handleFilterChange.bind(this);
 		this.mapIntoArray = this.mapIntoArray.bind(this)
 		this.handleDeleteBook = this.handleDeleteBook.bind(this)
+		this.handleDeleteBook = this.handleDeleteBook.bind(this)
 	}
 
 	componentDidMount() {
@@ -59,13 +60,14 @@ class App extends Component {
 			<div className="App">
 				<Header />
 				<Content 
-					books={books} 
-					isLoaded={isLoaded}
-					error={error}
-					handleFilterChange={this.handleFilterChange}
+					books = {books} 
+					isLoaded = {isLoaded}
+					error = {error}
+					handleFilterChange = {this.handleFilterChange}
 					handleDeleteBook = {this.handleDeleteBook}
-					filtersChecked={filtersChecked}
-					isFilterClicked={isFilterClicked}
+					handleKeyUpEditBook = {this.handleKeyUpEditBook}
+					filtersChecked = {filtersChecked}
+					isFilterClicked = {isFilterClicked}
 				/>
 			</div>
 		);
@@ -102,8 +104,10 @@ class App extends Component {
 
 	handleDeleteBook(e) {
 		console.log('delete book')
-		console.log('this.state.books ', this.state.books)
-		
+	}
+
+	handleKeyUpEditBook(e) {
+		console.log('keyup')
 	}
 }
 

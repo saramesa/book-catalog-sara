@@ -9,20 +9,21 @@ class EditBookCatalogItem extends Component {
   render() {
   	const { 
 		books,
-    handleDeleteBook
+    handleDeleteBook,
+    handleKeyUpEditBook
 	} = this.props;
     return (
     	<li>
       	{books.map(book => (
-      		<Row className="edit-container">
+      		<Row className="edit-container" key={book.id}>
       			<Col className="col-3">
       				<img className="image-edit-book" alt="book-front" src={book.image}/>
       			</Col>
       			<Col className="col-8">
       				<label>Title:</label>
-      				<input className="title-edit-book" type="text" value={book.title}></input>
+      				<input className="title-edit-book" type="text" onKeyUp={handleKeyUpEditBook} defaultValue={book.title} />
       				<label>Price:</label>
-      				<input className="title-edit-book" type="text" value={book.price}></input>
+      				<input className="title-edit-book" type="text" onKeyUp={handleKeyUpEditBook} defaultValue={book.price} />
       				<label>Genres:</label>
               <InputGenre 
                 book={book}

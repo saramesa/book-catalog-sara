@@ -19,20 +19,21 @@ class Content extends Component {
 			error,
 			handleFilterChange,
 			handleDeleteBook,
+			handleKeyUpEditBook,
 			filtersChecked,
 			isFilterClicked
 		} = this.props;
 		const catalogContent = (
 			<Fragment>
 				<Filters 
-					handleFilterChange={handleFilterChange} 
-					filtersChecked={filtersChecked}
-					isFilterClicked={isFilterClicked}
+					handleFilterChange = {handleFilterChange} 
+					filtersChecked = {filtersChecked}
+					isFilterClicked = {isFilterClicked}
 				/>
 				<BookList 
-					books={books} 
-					isLoaded={isLoaded}
-					error={error}
+					books = {books} 
+					isLoaded = {isLoaded}
+					error = {error}
 
 				/>
 			</Fragment>
@@ -50,8 +51,9 @@ class Content extends Component {
 						render={() => {
 							return (
 								<EditBookCatalog 
-									books={books} 
-									handleDeleteBook={handleDeleteBook}
+									books = {books} 
+									handleDeleteBook = {handleDeleteBook}
+									handleKeyUpEditBook = {handleKeyUpEditBook}
 								/>
 							);
 						}}

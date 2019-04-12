@@ -21,7 +21,7 @@ class FilterItem extends Component {
 		const {handleFilterChange, filtersChecked} = this.props;
 	    return (
 	    	this.state.genres.map(genre => (
-		    	<span className="filter-item" style={{backgroundColor: filtersChecked.includes(genre) ? '#2195BA' : 'white'}} id={genre} onClick={handleFilterChange}>{genre}</span>
+		    	<span className="filter-item" key={genre} style={{backgroundColor: filtersChecked.includes(genre) ? '#2195BA' : 'white'}} id={genre} onClick={handleFilterChange}>{genre}</span>
 		 	))
 	    );
 	}

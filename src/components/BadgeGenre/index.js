@@ -10,7 +10,7 @@ class BadgeGenre extends Component {
     } = this.props;
     return (
       genres.map(genre => (
-        <Badge variant="secondary" className="badge-genre">{genre}</Badge>
+        <Badge variant="secondary" className="badge-genre" key={genre}>{genre}</Badge>
       ))
     )
   }
