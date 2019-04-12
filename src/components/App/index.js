@@ -103,9 +103,9 @@ class App extends Component {
 
 	handleDeleteBook(e) {
 		let id = e.target.id;
-		let arrayBooks = this.state.books.filter(book => book.id !== id);
+		let remainingBooks = this.state.books.filter(book => book.id !== id);
 		this.setState({
-      		books: arrayBooks
+      		books: remainingBooks
    	 	})
 	}
 
