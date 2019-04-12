@@ -30,7 +30,7 @@ class EditBookCatalogItem extends Component {
                />
       			</Col>
       			<Col className="col-1 fa-times-container">
-      				<i className="far fa-times-circle fa-times-custom" onClick={handleDeleteBook}></i>
+      				<i className="far fa-times-circle fa-times-custom" id={book.id} onClick={handleDeleteBook}></i>
       			</Col>     			
 			    </Row>
       	))} 

@@ -86,9 +86,8 @@ class App extends Component {
 			if(book.genre.every( genre => {
 				if(this.state.filtersChecked.length !== 0 && this.state.filtersChecked.includes(genre)) {
 					array.push(book);
-				}})) {
-				
-			}
+				}}
+			));
 		})
 		
 		if (array.length !== 0) {
@@ -103,7 +102,11 @@ class App extends Component {
 	}
 
 	handleDeleteBook(e) {
-		console.log('delete book')
+		let id = e.target.id;
+		let arrayBooks = this.state.books.filter(book => book.id !== id);
+		this.setState({
+      		books: arrayBooks
+   	 	})
 	}
 
 	handleKeyUpEditBook(e) {
