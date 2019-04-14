@@ -22,8 +22,8 @@ class BookList extends Component {
     } else {
       return (
       <Row>
-        <Col className="col-md-2"></Col>
-        <Col className="col-md-8"><ul className="book-list">
+        <Col className="col-md-1"></Col>
+        <Col className="col-md-10"><ul className="book-list">
           {books.map(book => (
           <li className="book-list-item" key={book.id}>
                 <Row>
@@ -40,6 +40,12 @@ class BookList extends Component {
                   <Col>{book.author}</Col>
                 </Row>
                 <Row>
+                  <Col>
+                    <span>{book.price}</span>
+                    <span>{book.currency}</span>
+                  </Col>
+                </Row> 
+                <Row>
                   <Col className="book-date">{book.date}</Col>
                 </Row>   
                 <Row>
@@ -50,7 +56,7 @@ class BookList extends Component {
             </li>        
           ))}
         </ul></Col>
-        <Col className="col-md-2"></Col>
+        <Col className="col-md-1"></Col>
       </Row>
         
       );

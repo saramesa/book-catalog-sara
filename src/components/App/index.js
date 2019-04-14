@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.scss';
 import * as BookCatalogAPI from '../../api/bookCatalogApi';
+
 import Header from '../Header';
 import Content from '../Content'
 
@@ -14,13 +15,27 @@ class App extends Component {
       		error: false,
       		filtersChecked: [],
       		isFilterClicked: false,
+      		isShowing: false
 		}
 
 		this.handleFilterChange = this.handleFilterChange.bind(this);
 		this.mapIntoArray = this.mapIntoArray.bind(this)
 		this.handleDeleteBook = this.handleDeleteBook.bind(this)
-		this.handleDeleteBook = this.handleDeleteBook.bind(this)
+		this.handleOnChangeEditBook = this.handleOnChangeEditBook.bind(this)
+		this.handleAddBook = this.handleAddBook.bind(this);
 	}
+
+   	openModalHandler = () => {
+        this.setState({
+            isShowing: true
+        });
+    }
+
+    closeModalHandler = () => {
+        this.setState({
+            isShowing: false
+        });
+    }
 
 	componentDidMount() {
 	    BookCatalogAPI.getBooksCatalog()
@@ -34,7 +49,7 @@ class App extends Component {
 	      }, (error) => {
 	          this.setState({
 	            isLoaded: true,
-	            message: 'No Data Found'
+	            message: 'No Data'
 	          })
 	      }
 	    )
@@ -59,13 +74,16 @@ class App extends Component {
 		return (
 			<div className="App">
 				<Header />
-				<Content 
+				<Content
+                    show = {this.state.isShowing}
+                    close = {this.closeModalHandler}
 					books = {books} 
 					isLoaded = {isLoaded}
 					error = {error}
 					handleFilterChange = {this.handleFilterChange}
 					handleDeleteBook = {this.handleDeleteBook}
-					handleKeyUpEditBook = {this.handleKeyUpEditBook}
+					handleAddBook={this.handleAddBook}
+					handleOnChangeEditBook = {this.handleOnChangeEditBook}
 					filtersChecked = {filtersChecked}
 					isFilterClicked = {isFilterClicked}
 				/>
@@ -74,22 +92,24 @@ class App extends Component {
 	}
 
 	handleFilterChange(e) {
+		const { books, filtersChecked } = this.state;
 		let id = e.target.id;
 		let array = [];
-		if (!this.state.filtersChecked.includes(id)) {
-			this.state.filtersChecked.push(id)
+		if (!filtersChecked.includes(id)) {
+			filtersChecked.push(id)
 		} else {
-			const index = this.state.filtersChecked.indexOf(id);
-			this.state.filtersChecked.splice(index, 1)
+			const index = filtersChecked.indexOf(id);
+			filtersChecked.splice(index, 1)
 		}
-		this.state.originalBooks.filter(book => {
+
+		books.filter(book => {
 			if(book.genre.every( genre => {
-				if(this.state.filtersChecked.length !== 0 && this.state.filtersChecked.includes(genre)) {
+				console.log('genre ', genre);
+				if(filtersChecked.length !== 0 && filtersChecked.includes(genre)) {
 					array.push(book);
 				}}
 			));
 		})
-		
 		if (array.length !== 0) {
 			this.setState({
       			books: array
@@ -101,16 +121,47 @@ class App extends Component {
 		}
 	}
 
-	handleDeleteBook(e) {
-		let id = e.target.id;
-		let remainingBooks = this.state.books.filter(book => book.id !== id);
-		this.setState({
-      		books: remainingBooks
-   	 	})
+	handleDeleteBook(id) {
+   	 	this.setState(prevState => {
+   	 		const remainingBooks = prevState.books.filter(book => book.id !== id)
+			const newState = {
+				books: remainingBooks,
+				originalBooks: remainingBooks
+			}
+			return newState;
+		})
 	}
 
-	handleKeyUpEditBook(e) {
-		console.log('keyup')
+	handleAddBook(book) {
+		console.log('add Book');
+		console.log('book ', book);
+/*		this.setState(prevState => {
+			const newBooksArray = prevState.books.concat(book)
+			const newState = {
+				books: newBooksArray,
+				originalBooks: newBooksArray
+			}
+			return newState;
+		})*/
+	}
+
+	handleOnChangeEditBook(value, name, id) {
+		this.setState(prevState => {
+			const changedBook = prevState.books.map(book => {
+				if (book.id === id) {
+					book = {
+						...book,
+						[name]: value
+					}
+				}
+					return book;
+			})
+			const newState = {
+				books: changedBook,
+				originalBooks: changedBook
+			}
+			return newState;
+		})
 	}
 }
 

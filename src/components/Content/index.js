@@ -14,12 +14,15 @@ class Content extends Component {
 	}
 	render() {
 		const {
+			show,
+			close,
 			books,
 			isLoaded,
 			error,
 			handleFilterChange,
 			handleDeleteBook,
-			handleKeyUpEditBook,
+			handleOnChangeEditBook,
+			handleAddBook,
 			filtersChecked,
 			isFilterClicked
 		} = this.props;
@@ -51,9 +54,12 @@ class Content extends Component {
 						render={() => {
 							return (
 								<EditBookCatalog 
+									show = {show}
+									close = {close}
 									books = {books} 
 									handleDeleteBook = {handleDeleteBook}
-									handleKeyUpEditBook = {handleKeyUpEditBook}
+									handleOnChangeEditBook = {handleOnChangeEditBook}
+									handleAddBook={handleAddBook}
 								/>
 							);
 						}}

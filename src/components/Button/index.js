@@ -1,16 +1,23 @@
-import React, { Component } from 'react';
-import '../../components/FilterItem/FilterItem.scss';
+import React from 'react';
+import PropTypes from 'prop-types';
 import './Button.scss';
 
-class Button extends Component {
-  	render() {
-	    return (
-	    	<button className="filter-item">
-	    		<span>Add new book</span>
-	    		<span className="add-new-book-icon"><i className="fas fa-plus-circle"></i></span>
-	    	</button>
-	    );
-    }
+const Button = ({ type, style, children, handleBtnClick }) => {
+	return (
+		<button
+			className={style}
+			type={type}
+			onClick={handleBtnClick}
+		>
+			{children}
+		</button>
+	);
+}
+
+Button.propTypes = {
+	type: PropTypes.string.isRequired,
+	style: PropTypes.string.isRequired,
+	handleBtnClick: PropTypes.func
 }
 
 export default Button;

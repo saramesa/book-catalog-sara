@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component  } from 'react';
 import './InputGenre.scss';
 
 class InputGenre extends Component {
@@ -9,7 +9,10 @@ class InputGenre extends Component {
 	  } = this.props;
     return (
     	book.genre.map(genre => (
-      		<input className="title-edit-book" defaultValue={genre} key={genre}/>
+        <div className="container-badge-delete">      		
+          <input className="input-genre" defaultValue={genre}></input>
+          <span><i className="far fa-times-circle fa-times-custom"></i></span>
+        </div> 
       	))
       );
     }
