@@ -13,7 +13,8 @@ class ModalContent extends Component {
 			picture: "",
 			author: "",
 			title: "",
-			price: ""
+			price: "",
+			genres: []
 		}
 	}
 
@@ -81,7 +82,9 @@ class ModalContent extends Component {
 		    			<Button
 		    				type="button"
 		    				style="add-genre"
-		    			><i className="fas fa-plus-circle"></i></Button>
+		    			>
+		    				<i className="fas fa-plus-circle"></i>
+		    			</Button>
 	    			</Col>
 	    		</Row>          	
 	        	<Row>

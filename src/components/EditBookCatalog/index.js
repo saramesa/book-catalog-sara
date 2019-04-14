@@ -24,6 +24,7 @@ class EditBookCatalog extends Component {
 	}
 
 	onAddBook(e) {
+		console.log('e', e)
 		const {  handleAddBook } = this.props;
 		const formData = new FormData(e.target)
    		const book = {}
