@@ -155,42 +155,27 @@ class App extends Component {
 	}
 
 	handleDeleteGenre(deletedGenre, bookID) {
-		const { books } = this.state;
-		const newBook = books.filter(book => {
-			if (book.id === bookID) {
-				const genres = book.genre.filter(bookGenre => bookGenre !== deletedGenre);
-				console.log('genres ', genres)
-				book = {
-					...book,
-					genres: genres
-				}
-				console.log('book ', book)
-				return book;
-			}
-		})
-		console.log('newBook ', newBook)	
-/*		books.filter(book => book !== genre)
-		
-		const items = ['a', 'b', 'c', 'd', 'e', 'f']
-		const valueToRemove = 'c'
-		const filteredItems = items.filter(item => item !== valueToRemove)*/
-// ["a", "b", "d", "e", "f"]
-/*		this.setState(prevState => {
-			const remainingGenres = prevState.books.genres.map(book => {
-				if (book.id === id) {
+		this.setState(prevState => {
+			const newBooks = prevState.books.map(book => {
+				if (book.id === bookID) {
+					const genres = book.genre.filter(bookGenre => bookGenre !== deletedGenre);
 					book = {
 						...book,
-						[name]: value
+						genre: genres
 					}
-				}
+					console.log('book ', book)
 					return book;
+				} else {
+					return book
+				}
 			})
+			console.log('newBooks ', newBooks)
 			const newState = {
-				books: changedBook,
-				originalBooks: changedBook
+				books: newBooks,
+				originalBooks: newBooks
 			}
 			return newState;
-		})*/
+		})
 	}
 
 	handleOnChangeEditBook(value, name, id) {
