@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.scss';
 import * as BookCatalogAPI from '../../api/bookCatalogApi';
-
+import * as GenresAPI from '../../api/genresApi';
 import Header from '../Header';
 import Content from '../Content'
 
@@ -15,7 +15,8 @@ class App extends Component {
       		error: false,
       		filtersChecked: [],
       		isFilterClicked: false,
-      		isShowing: false
+      		isShowing: false,
+      		genres: []
 		}
 
 		this.handleFilterChange = this.handleFilterChange.bind(this);
@@ -53,6 +54,10 @@ class App extends Component {
 	          })
 	      }
 	    )
+	   	const genresBooks = GenresAPI.getBookGenres()
+	   		this.setState({
+            	genres: genresBooks
+        	});
   	}
 
   	mapIntoArray(result) {
@@ -64,6 +69,7 @@ class App extends Component {
 	render() {
 		const {
 			books,
+			genres,
 			isLoaded,
 			error,
 			handleFilterChange,
@@ -78,6 +84,7 @@ class App extends Component {
                     show = {this.state.isShowing}
                     close = {this.closeModalHandler}
 					books = {books} 
+					genres = {genres}
 					isLoaded = {isLoaded}
 					error = {error}
 					handleFilterChange = {this.handleFilterChange}

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './EditBookCatalogItem.scss';
-import InputGenre from '../../components/InputGenre'
+import InputGenre from '../../components/InputGenre';
+import DropdownGenre from '../../components/DropdownGenre';
 
 class EditBookCatalogItem extends Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class EditBookCatalogItem extends Component {
   render() {
   	const { 
 		books,
+    genres,
     handleDeleteBook,
     handleOnChangeEditBook
 	} = this.props;
@@ -42,8 +44,9 @@ class EditBookCatalogItem extends Component {
       				<label className="label-edit">Price:</label>
       				<input className="title-edit-book" type="number" id={book.id} name="price" value={book.price} onChange={this.onBookUpdate} />
       				<label className="label-edit">Genres:</label>
-              <InputGenre 
+              <DropdownGenre 
                 book={book}
+                genres={genres}
                />
       			</Col>
       			<Col className="col-1 fa-times-container">

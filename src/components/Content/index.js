@@ -17,6 +17,7 @@ class Content extends Component {
 			show,
 			close,
 			books,
+			genres,
 			isLoaded,
 			error,
 			handleFilterChange,
@@ -29,6 +30,7 @@ class Content extends Component {
 		const catalogContent = (
 			<Fragment>
 				<Filters 
+					genres = {genres}
 					handleFilterChange = {handleFilterChange} 
 					filtersChecked = {filtersChecked}
 					isFilterClicked = {isFilterClicked}
@@ -55,6 +57,7 @@ class Content extends Component {
 							return (
 								<EditBookCatalog 
 									show = {show}
+									genres = {genres}
 									close = {close}
 									books = {books} 
 									handleDeleteBook = {handleDeleteBook}

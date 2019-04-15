@@ -45,6 +45,7 @@ class EditBookCatalog extends Component {
   	render() {
   		const { 
   			books,
+  			genres,
 			handleDeleteBook,
 			handleOnChangeEditBook
 		} = this.props;
@@ -67,6 +68,7 @@ class EditBookCatalog extends Component {
 			    			handleDeleteBook = {handleDeleteBook}
 			    			handleOnChangeEditBook = {handleOnChangeEditBook}
 		      				books = {books}
+		      				genres = {genres}
 		      			/>	
 		      			{ this.state.showModal ? <Modal 
 		      					handleClose = {this.hideModal} 

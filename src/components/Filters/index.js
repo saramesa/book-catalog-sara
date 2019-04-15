@@ -7,14 +7,16 @@ class Filters extends Component {
 		const {
 			handleFilterChange,
 			filtersChecked, 
-			isFilterClicked
+			isFilterClicked,
+			genres
 		} = this.props;
 	    return (
 	    	<div className="filters-container">
 	    		<FilterItem 
-	    			handleFilterChange={handleFilterChange}
-	    			filtersChecked={filtersChecked}
-	    			isFilterClicked={isFilterClicked}
+	    			genres = {genres}
+	    			handleFilterChange = {handleFilterChange}
+	    			filtersChecked = {filtersChecked}
+	    			isFilterClicked = {isFilterClicked}
 	    		/>
 		 	</div>
 	    );
