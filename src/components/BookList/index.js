@@ -50,7 +50,10 @@ class BookList extends Component {
                 </Row>   
                 <Row>
                   <Col>
-                    <BadgeGenre variant="secondary" genres={book.genre}></BadgeGenre>
+                    <BadgeGenre 
+                      variant="secondary" 
+                      genres={book.genre}>
+                    </BadgeGenre>
                   </Col>
                 </Row>    
             </li>        

@@ -4,6 +4,10 @@ import Dropdown from 'react-bootstrap/Dropdown';
 
 
 class DropdownItem extends Component {
+  selectGenre(e) {
+    console.log('e.currentTarget ', e.currentTarget)
+  }
+
   render() {
   	const { 
     genres
@@ -11,7 +15,7 @@ class DropdownItem extends Component {
   console.log('this.props ', this.props);
     return (
       genres.map(genre => (
-        <Dropdown.Item>
+        <Dropdown.Item id={genre} onClick={this.selectGenre} key={genre}>
           {genre}
         </Dropdown.Item>
       ))

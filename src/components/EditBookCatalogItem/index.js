@@ -4,12 +4,16 @@ import Col from 'react-bootstrap/Col';
 import './EditBookCatalogItem.scss';
 import InputGenre from '../../components/InputGenre';
 import DropdownGenre from '../../components/DropdownGenre';
+import BadgeGenre from '../../components/BadgeGenre';
 
 class EditBookCatalogItem extends Component {
   constructor(props) {
     super(props);
     this.onBookUpdate = this.onBookUpdate.bind(this);
     this.onDeleteBook = this.onDeleteBook.bind(this);
+    this.state = {
+      showDeleteButton: true,
+    }
   }
 
   onBookUpdate(e) {
@@ -29,12 +33,13 @@ class EditBookCatalogItem extends Component {
 		books,
     genres,
     handleDeleteBook,
+    handleDeleteGenre,
     handleOnChangeEditBook
 	} = this.props;
     return (
     	<li>
       	{books.map(book => (
-      		<Row className="edit-container">
+      		<Row className="edit-container"key={book.id}>
       			<Col className="col-3">
       				<img className="image-edit-book" alt="book-front" src={book.image}/>
       			</Col>
@@ -44,10 +49,17 @@ class EditBookCatalogItem extends Component {
       				<label className="label-edit">Price:</label>
       				<input className="title-edit-book" type="number" id={book.id} name="price" value={book.price} onChange={this.onBookUpdate} />
       				<label className="label-edit">Genres:</label>
+              <BadgeGenre 
+                genres={book.genre}
+                bookid={book.id}
+                showDeleteButton={this.state.showDeleteButton}
+                handleDeleteGenre={handleDeleteGenre}
+              />
+              
               <DropdownGenre 
                 book={book}
                 genres={genres}
-               />
+              />
       			</Col>
       			<Col className="col-1 fa-times-container">
       				<i className="far fa-times-circle fa-times-custom" id={book.id} onClick={this.onDeleteBook}></i>

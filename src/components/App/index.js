@@ -24,6 +24,7 @@ class App extends Component {
 		this.handleDeleteBook = this.handleDeleteBook.bind(this)
 		this.handleOnChangeEditBook = this.handleOnChangeEditBook.bind(this)
 		this.handleAddBook = this.handleAddBook.bind(this);
+		this.handleDeleteGenre = this.handleDeleteGenre.bind(this);
 	}
 
    	openModalHandler = () => {
@@ -90,6 +91,7 @@ class App extends Component {
 					handleFilterChange = {this.handleFilterChange}
 					handleDeleteBook = {this.handleDeleteBook}
 					handleAddBook={this.handleAddBook}
+					handleDeleteGenre={this.handleDeleteGenre}
 					handleOnChangeEditBook = {this.handleOnChangeEditBook}
 					filtersChecked = {filtersChecked}
 					isFilterClicked = {isFilterClicked}
@@ -147,6 +149,45 @@ class App extends Component {
 			const newState = {
 				books: newBooksArray,
 				originalBooks: newBooksArray
+			}
+			return newState;
+		})*/
+	}
+
+	handleDeleteGenre(deletedGenre, bookID) {
+		const { books } = this.state;
+		const newBook = books.filter(book => {
+			if (book.id === bookID) {
+				const genres = book.genre.filter(bookGenre => bookGenre !== deletedGenre);
+				console.log('genres ', genres)
+				book = {
+					...book,
+					genres: genres
+				}
+				console.log('book ', book)
+				return book;
+			}
+		})
+		console.log('newBook ', newBook)	
+/*		books.filter(book => book !== genre)
+		
+		const items = ['a', 'b', 'c', 'd', 'e', 'f']
+		const valueToRemove = 'c'
+		const filteredItems = items.filter(item => item !== valueToRemove)*/
+// ["a", "b", "d", "e", "f"]
+/*		this.setState(prevState => {
+			const remainingGenres = prevState.books.genres.map(book => {
+				if (book.id === id) {
+					book = {
+						...book,
+						[name]: value
+					}
+				}
+					return book;
+			})
+			const newState = {
+				books: changedBook,
+				originalBooks: changedBook
 			}
 			return newState;
 		})*/

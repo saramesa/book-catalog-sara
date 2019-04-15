@@ -5,24 +5,18 @@ import DropdownItem from '../../components/DropdownItem';
 
 
 class DropdownGenre extends Component {
-
   render() {
   	const { 
-		book,
-    genres
-	} = this.props;
-  console.log('this.props ', this.props);
+		  book,
+      genres,
+	  } = this.props;
     return (
-      book.genre.map(genre => (
-        <div>
-      	  <DropdownButton id="dropdown-basic-button" title={genre} id={genre} variant="secondary">
-            <DropdownItem 
-              genres = {genres}
-            />
-        	</DropdownButton>
-          <span><i className="far fa-times-circle fa-times-custom"></i></span>
-        </div>
-      ))
+      <DropdownButton id="dropdown-basic-button" className="dropdown-container" title="Seleccionar género" variant="secondary">
+        <DropdownItem 
+          genres = {genres}
+          book = {book}
+        />
+      </DropdownButton>
     );
   }
 }

@@ -24,6 +24,7 @@ class Content extends Component {
 			handleDeleteBook,
 			handleOnChangeEditBook,
 			handleAddBook,
+			handleDeleteGenre,
 			filtersChecked,
 			isFilterClicked
 		} = this.props;
@@ -63,6 +64,7 @@ class Content extends Component {
 									handleDeleteBook = {handleDeleteBook}
 									handleOnChangeEditBook = {handleOnChangeEditBook}
 									handleAddBook={handleAddBook}
+									handleDeleteGenre={handleDeleteGenre}
 								/>
 							);
 						}}
