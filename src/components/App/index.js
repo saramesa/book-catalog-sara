@@ -110,31 +110,25 @@ class App extends Component {
 	}
 
 	handleFilterChange(e) {
-		const { books, filtersChecked } = this.state;
-		let id = e.target.id;
-		let array = [];
+		const { filtersChecked, originalBooks } = this.state;
+		const id = e.target.id;
 		if (!filtersChecked.includes(id)) {
 			filtersChecked.push(id)
 		} else {
 			const index = filtersChecked.indexOf(id);
 			filtersChecked.splice(index, 1)
 		}
-
-		books.filter(book => {
-			book.genre.every( genre => {
-				if(filtersChecked.length !== 0 && filtersChecked.includes(genre)) {
-					array.push(book);
-				}
-			});
-		})
-		console.log('array ', array)
-		if (array.length !== 0) {
+		const found = originalBooks.filter(book => 
+			book.genre.some(genre => 
+				filtersChecked.includes(genre))
+		)
+		if (found.length !== 0) {
 			this.setState({
-      			books: array
+      			books: found
    	 		})
 		} else {
 			this.setState({
-      			books: this.state.originalBooks
+      			books: originalBooks
    	 		})
 		}
 	}
