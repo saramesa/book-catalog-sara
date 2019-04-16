@@ -34,6 +34,7 @@ class EditBookCatalogItem extends Component {
     genres,
     handleDeleteBook,
     handleDeleteGenre,
+    handleAddGenre,
     handleOnChangeEditBook
 	} = this.props;
     return (
@@ -59,6 +60,7 @@ class EditBookCatalogItem extends Component {
               <DropdownGenre 
                 book={book}
                 genres={genres}
+                handleAddGenre={handleAddGenre}
               />
       			</Col>
       			<Col className="col-1 fa-times-container">

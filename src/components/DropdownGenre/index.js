@@ -9,12 +9,14 @@ class DropdownGenre extends Component {
   	const { 
 		  book,
       genres,
+      handleAddGenre
 	  } = this.props;
     return (
       <DropdownButton id="dropdown-basic-button" className="dropdown-container" title="Seleccionar género" variant="secondary">
         <DropdownItem 
           genres = {genres}
           book = {book}
+          handleAddGenre = {handleAddGenre}
         />
       </DropdownButton>
     );

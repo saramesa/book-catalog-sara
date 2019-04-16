@@ -25,6 +25,7 @@ class App extends Component {
 		this.handleOnChangeEditBook = this.handleOnChangeEditBook.bind(this)
 		this.handleAddBook = this.handleAddBook.bind(this);
 		this.handleDeleteGenre = this.handleDeleteGenre.bind(this);
+		this.handleAddGenre = this.handleAddGenre.bind(this);
 	}
 
    	openModalHandler = () => {
@@ -75,6 +76,7 @@ class App extends Component {
 			error,
 			handleFilterChange,
 			handleDeleteBook,
+			handleAddGenre,
 			filtersChecked,
 			isFilterClicked
 		} = this.state;
@@ -90,6 +92,7 @@ class App extends Component {
 					error = {error}
 					handleFilterChange = {this.handleFilterChange}
 					handleDeleteBook = {this.handleDeleteBook}
+					handleAddGenre = {this.handleAddGenre}
 					handleAddBook={this.handleAddBook}
 					handleDeleteGenre={this.handleDeleteGenre}
 					handleOnChangeEditBook = {this.handleOnChangeEditBook}
@@ -113,7 +116,6 @@ class App extends Component {
 
 		books.filter(book => {
 			if(book.genre.every( genre => {
-				console.log('genre ', genre);
 				if(filtersChecked.length !== 0 && filtersChecked.includes(genre)) {
 					array.push(book);
 				}}
@@ -163,6 +165,28 @@ class App extends Component {
 						...book,
 						genre: genres
 					}
+					return book;
+				} else {
+					return book
+				}
+			})
+			const newState = {
+				books: newBooks,
+				originalBooks: newBooks
+			}
+			return newState;
+		})
+	}
+
+	handleAddGenre(addedGenre, bookID) {
+/*		this.setState(prevState => {
+			const newBooks = prevState.books.map(book => {
+				if (book.id === bookID) {
+					const genres = book.genre.filter(bookGenre => bookGenre !== deletedGenre);
+					book = {
+						...book,
+						genre: genres
+					}
 					console.log('book ', book)
 					return book;
 				} else {
@@ -175,7 +199,7 @@ class App extends Component {
 				originalBooks: newBooks
 			}
 			return newState;
-		})
+		})*/
 	}
 
 	handleOnChangeEditBook(value, name, id) {

@@ -48,7 +48,8 @@ class EditBookCatalog extends Component {
   			genres,
 			handleDeleteBook,
 			handleOnChangeEditBook,
-			handleDeleteGenre
+			handleDeleteGenre,
+			handleAddGenre
 		} = this.props;
 	    return (
 	    	
@@ -67,6 +68,7 @@ class EditBookCatalog extends Component {
 		    			</div>
 			    		<EditBookCatalogItem
 			    			handleDeleteBook = {handleDeleteBook}
+			    			handleAddGenre = {handleAddGenre}
 			    			handleOnChangeEditBook = {handleOnChangeEditBook}
 			    			handleDeleteGenre = {handleDeleteGenre}
 		      				books = {books}
