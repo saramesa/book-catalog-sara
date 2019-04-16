@@ -8,7 +8,8 @@ class Modal extends Component {
 			handleClose,
 			handleBtnClick,
 			handleAddGenre,
-			genres
+			genres,
+			maxID
 
 		} = this.props;
     	return(
@@ -18,6 +19,7 @@ class Modal extends Component {
 	    			handleBtnClick = {handleBtnClick}
 	    			handleAddGenre = {handleAddGenre}
 	    			genres = {genres}
+	    			maxID = {maxID}
 	    		/>
 	        </section>
     	)

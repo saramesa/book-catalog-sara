@@ -16,7 +16,8 @@ class App extends Component {
       		filtersChecked: [],
       		isFilterClicked: false,
       		isShowing: false,
-      		genres: []
+      		genres: [],
+      		maxID: ""
 		}
 
 		this.handleFilterChange = this.handleFilterChange.bind(this);
@@ -65,12 +66,16 @@ class App extends Component {
   	mapIntoArray(result) {
   		let array = []
   		Object.keys(result).filter(index => array.push(result[index]))
+  		this.setState({
+  			maxID: array.length
+  		})
   		return array
   	}
 
 	render() {
 		const {
 			books,
+			maxID,
 			genres,
 			isLoaded,
 			error,
@@ -86,7 +91,8 @@ class App extends Component {
 				<Content
                     show = {this.state.isShowing}
                     close = {this.closeModalHandler}
-					books = {books} 
+					books = {books}
+					maxID = {maxID} 
 					genres = {genres}
 					isLoaded = {isLoaded}
 					error = {error}
@@ -115,12 +121,13 @@ class App extends Component {
 		}
 
 		books.filter(book => {
-			book.genre.map( genre => {
+			book.genre.every( genre => {
 				if(filtersChecked.length !== 0 && filtersChecked.includes(genre)) {
 					array.push(book);
 				}
 			});
 		})
+		console.log('array ', array)
 		if (array.length !== 0) {
 			this.setState({
       			books: array

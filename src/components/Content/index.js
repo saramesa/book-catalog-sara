@@ -17,6 +17,7 @@ class Content extends Component {
 			show,
 			close,
 			books,
+			maxID,
 			genres,
 			isLoaded,
 			error,
@@ -62,6 +63,7 @@ class Content extends Component {
 									genres = {genres}
 									close = {close}
 									books = {books} 
+									maxID = {maxID}
 									handleDeleteBook = {handleDeleteBook}
 									handleOnChangeEditBook = {handleOnChangeEditBook}
 									handleAddBook={handleAddBook}

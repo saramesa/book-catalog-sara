@@ -9,13 +9,15 @@ class DropdownGenre extends Component {
   	const { 
 		  book,
       genres,
-      handleAddGenre
+      handleAddGenre,
+      maxID
 	  } = this.props;
     return (
       <DropdownButton id="dropdown-basic-button" className="dropdown-container" title="Seleccionar género" variant="secondary">
         <DropdownItem 
           genres = {genres}
           book = {book}
+          maxID = {maxID}
           handleAddGenre = {handleAddGenre}
         />
       </DropdownButton>

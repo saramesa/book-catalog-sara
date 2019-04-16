@@ -20,8 +20,10 @@ class DropdownItem extends Component {
   	const { 
     genres,
     book,
+    maxID,
     handleAddGenre
 	} = this.props;
+  console.log('this.props.maxID', this.props.maxID)
     return (
       genres.map(genre => (
         <Dropdown.Item id={book.id} name={genre} key={genre} onClick={this.onSelectGenre}>

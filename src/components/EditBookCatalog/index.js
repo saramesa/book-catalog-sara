@@ -48,6 +48,7 @@ class EditBookCatalog extends Component {
 			handleOnChangeEditBook,
 			handleDeleteGenre,
 			handleAddGenre,
+			maxID
 		} = this.props;
 	    return (
 	    	
@@ -77,6 +78,7 @@ class EditBookCatalog extends Component {
 		      					handleBtnClick = {this.onAddBook}
 		      					handleAddGenre = {handleAddGenre}
 		      					genres = {genres}
+		      					maxID = {maxID}
 		      					/> : null }
 	      			</Col>
 		    		<Col md={2}></Col>

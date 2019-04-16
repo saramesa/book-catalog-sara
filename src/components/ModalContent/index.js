@@ -24,7 +24,8 @@ class ModalContent extends Component {
 			handleClose,
 			handleBtnClick,
 			handleAddGenre, 
-			genres
+			genres,
+			maxID
 		} = this.props;
     	return(
     		<form onSubmit={handleBtnClick}>
@@ -78,6 +79,7 @@ class ModalContent extends Component {
 	    			<Col>
 	    				<DropdownGenre 
       						genres = {genres}
+      						maxID = {maxID}
       						
 		    			/>
 	    			</Col>
