@@ -26,10 +26,8 @@ class LoginForm extends Component {
     let result = AuthenticateAPI.onAuthenticate(payload)
     if (result) {
         //redirigir a la siguiente pantalla
-      console.log('redirige a la siguiente pantalla')
       return (<Redirect to="/catalog" />);
-    } else {
-      console.log('usuario no existe')        
+    } else {    
     }  		
   }
 

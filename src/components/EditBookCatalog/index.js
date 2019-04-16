@@ -24,7 +24,6 @@ class EditBookCatalog extends Component {
 	}
 
 	onAddBook(e) {
-		console.log('e', e)
 		const {  handleAddBook } = this.props;
 		const formData = new FormData(e.target)
    		const book = {}
@@ -33,7 +32,6 @@ class EditBookCatalog extends Component {
    		for (let entry of formData.entries()) {
        		book[entry[0]] = entry[1]
    		}
-   		console.log('book en EditBookCatalog ', book)
 		handleAddBook(book);
 	}
 
@@ -49,7 +47,7 @@ class EditBookCatalog extends Component {
 			handleDeleteBook,
 			handleOnChangeEditBook,
 			handleDeleteGenre,
-			handleAddGenre
+			handleAddGenre,
 		} = this.props;
 	    return (
 	    	
@@ -77,6 +75,8 @@ class EditBookCatalog extends Component {
 		      			{ this.state.showModal ? <Modal 
 		      					handleClose = {this.hideModal} 
 		      					handleBtnClick = {this.onAddBook}
+		      					handleAddGenre = {handleAddGenre}
+		      					genres = {genres}
 		      					/> : null }
 	      			</Col>
 		    		<Col md={2}></Col>

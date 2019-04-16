@@ -4,7 +4,8 @@ import Col from 'react-bootstrap/Col';
 import './ModalContent.scss';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
-import InputGenre from '../../components/InputGenre';
+import DropdownGenre from '../../components/DropdownGenre';
+import BadgeGenre from '../../components/BadgeGenre';
 
 class ModalContent extends Component {
 	constructor(props) {
@@ -21,7 +22,9 @@ class ModalContent extends Component {
     render() {
     	const {
 			handleClose,
-			handleBtnClick
+			handleBtnClick,
+			handleAddGenre, 
+			genres
 		} = this.props;
     	return(
     		<form onSubmit={handleBtnClick}>
@@ -73,18 +76,10 @@ class ModalContent extends Component {
 	    		</Row>
 	    		<Row>
 	    			<Col>
-	    				<Input 
-		    				type="text"
-		    				name="genres"
-		    				labelText="Genres:"
-		    				style="input-genre"
+	    				<DropdownGenre 
+      						genres = {genres}
+      						
 		    			/>
-		    			<Button
-		    				type="button"
-		    				style="add-genre"
-		    			>
-		    				<i className="fas fa-plus-circle"></i>
-		    			</Button>
 	    			</Col>
 	    		</Row>          	
 	        	<Row>

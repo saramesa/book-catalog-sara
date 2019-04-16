@@ -115,11 +115,11 @@ class App extends Component {
 		}
 
 		books.filter(book => {
-			if(book.genre.every( genre => {
+			book.genre.map( genre => {
 				if(filtersChecked.length !== 0 && filtersChecked.includes(genre)) {
 					array.push(book);
-				}}
-			));
+				}
+			});
 		})
 		if (array.length !== 0) {
 			this.setState({
@@ -166,9 +166,8 @@ class App extends Component {
 						genre: genres
 					}
 					return book;
-				} else {
-					return book
 				}
+				return book
 			})
 			const newState = {
 				books: newBooks,
@@ -179,27 +178,20 @@ class App extends Component {
 	}
 
 	handleAddGenre(addedGenre, bookID) {
-/*		this.setState(prevState => {
+		this.setState(prevState => {
 			const newBooks = prevState.books.map(book => {
 				if (book.id === bookID) {
-					const genres = book.genre.filter(bookGenre => bookGenre !== deletedGenre);
-					book = {
-						...book,
-						genre: genres
-					}
-					console.log('book ', book)
-					return book;
-				} else {
+					book.genre = book.genre.concat(addedGenre)
 					return book
-				}
+				} 
+				return book
 			})
-			console.log('newBooks ', newBooks)
 			const newState = {
 				books: newBooks,
 				originalBooks: newBooks
 			}
 			return newState;
-		})*/
+		})
 	}
 
 	handleOnChangeEditBook(value, name, id) {

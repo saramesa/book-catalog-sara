@@ -6,7 +6,9 @@ class Modal extends Component {
     render() {
     	const {
 			handleClose,
-			handleBtnClick
+			handleBtnClick,
+			handleAddGenre,
+			genres
 
 		} = this.props;
     	return(
@@ -14,6 +16,8 @@ class Modal extends Component {
 	    		<ModalContent 
 	    			handleClose = {handleClose}
 	    			handleBtnClick = {handleBtnClick}
+	    			handleAddGenre = {handleAddGenre}
+	    			genres = {genres}
 	    		/>
 	        </section>
     	)

@@ -22,7 +22,6 @@ class DropdownItem extends Component {
     book,
     handleAddGenre
 	} = this.props;
-  console.log('this.props ', this.props);
     return (
       genres.map(genre => (
         <Dropdown.Item id={book.id} name={genre} key={genre} onClick={this.onSelectGenre}>
