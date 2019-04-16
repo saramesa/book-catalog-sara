@@ -1,4 +1,4 @@
 export const getBookGenres = () => {
-	return ["novel", "psychology", "cinema", "fiction"]
+	return ["novel", "psychology", "cinema", "fiction", "drama"]
 }
 	
