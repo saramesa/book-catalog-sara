@@ -4,11 +4,9 @@ import Badge from 'react-bootstrap/Badge';
 
 class BadgeGenre extends Component {constructor(props) {
     super(props);
-    this.deleteGenre = this.deleteGenre.bind(this);
   }
 
-  deleteGenre(e) {
-    const genre  = e.currentTarget.id;
+  deleteGenre(genre) {
     const { handleDeleteGenre, bookid } = this.props;
     handleDeleteGenre(genre, bookid)
   }
@@ -24,7 +22,7 @@ class BadgeGenre extends Component {constructor(props) {
       genres.map(genre => (
         <div key={genre}>
           <Badge variant="secondary" className="badge-genre" key={genre}>{genre}</Badge>
-          { showDeleteButton? <span><i className="far fa-times-circle fa-times-custom" id={genre} onClick={this.deleteGenre}></i></span> : null }
+          { showDeleteButton? <span><i className="far fa-times-circle fa-times-custom" id={genre} onClick={this.deleteGenre.bind(this, genre)}></i></span> : null }
         </div>
       ))
     )

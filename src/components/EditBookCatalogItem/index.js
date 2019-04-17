@@ -56,9 +56,8 @@ class EditBookCatalogItem extends Component {
                 showDeleteButton={this.state.showDeleteButton}
                 handleDeleteGenre={handleDeleteGenre}
               />
-              
               <DropdownGenre 
-                book={book}
+                bookid={book.id}
                 genres={genres}
                 handleAddGenre={handleAddGenre}
               />

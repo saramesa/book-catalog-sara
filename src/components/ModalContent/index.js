@@ -15,15 +15,40 @@ class ModalContent extends Component {
 			author: "",
 			title: "",
 			price: "",
-			genres: []
+			genre: []
 		}
+		this.onChangeField = this.onChangeField.bind(this);
+		this.addGenreOnNewBook = this.addGenreOnNewBook.bind(this);
+	}
+
+	onChangeField(e) {
+		const name = e.currentTarget.name;
+		const value = e.currentTarget.value
+		this.setState({
+			[name]: value
+		})
+	}
+
+	addGenreOnNewBook(e) {
+		console.log('addGenreOnNewBook')
+		console.log('e.currentTarget ', e.currentTarget)
+/*		this.setState(prevState => {
+			prevState.genre.push()
+			const newState = {
+				books: newBooks,
+				originalBooks: newBooks
+			}
+			return newState;
+		})*/
 	}
 
     render() {
     	const {
 			handleClose,
 			handleBtnClick,
-			handleAddGenre, 
+			handleAddGenre,
+			onChangeField, 
+			addGenreOnNewBook,
 			genres,
 			maxID
 		} = this.props;
@@ -42,6 +67,7 @@ class ModalContent extends Component {
 		    				name="picture"
 		    				labelText="Picture:"
 		    				style="title-edit-book"
+		    				handleInputChange={this.onChangeField}
 		    			/>
 					</Col>		    	
 		    	</Row>
@@ -52,6 +78,7 @@ class ModalContent extends Component {
 		    				name="author"
 		    				labelText="Author:"
 		    				style="title-edit-book"
+		    				handleInputChange={this.onChangeField}
 		    			/>
 					</Col>		    	
 		    	</Row>
@@ -62,6 +89,7 @@ class ModalContent extends Component {
 		    				name="title"
 		    				labelText="Title:"
 		    				style="title-edit-book"
+		    				handleInputChange={this.onChangeField}
 		    			/>
 					</Col>	    		
 	    		</Row>
@@ -72,6 +100,7 @@ class ModalContent extends Component {
 		    				name="price"
 		    				labelText="Price:"
 		    				style="title-edit-book"
+		    				handleInputChange={this.onChangeField}
 		    			/>
 					</Col>	    		
 	    		</Row>
@@ -79,8 +108,8 @@ class ModalContent extends Component {
 	    			<Col>
 	    				<DropdownGenre 
       						genres = {genres}
-      						maxID = {maxID}
-      						
+      						bookid = {maxID}
+      						handleAddGenre = {this.addGenreOnNewBook}
 		    			/>
 	    			</Col>
 	    		</Row>          	
