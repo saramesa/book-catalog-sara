@@ -14,9 +14,7 @@ class BadgeGenre extends Component {constructor(props) {
   render() {
     const {
       genres,
-      bookid,
-      showDeleteButton,
-      handleDeleteGenre
+      showDeleteButton
     } = this.props;
     return (
       genres.map(genre => (
@@ -25,7 +23,7 @@ class BadgeGenre extends Component {constructor(props) {
           { showDeleteButton? <span><i className="far fa-times-circle fa-times-custom" id={genre} onClick={this.deleteGenre.bind(this, genre)}></i></span> : null }
         </div>
       ))
-    )
+    ) 
   }
 }
 

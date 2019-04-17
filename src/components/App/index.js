@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.scss';
 import * as BookCatalogAPI from '../../api/bookCatalogApi';
 import * as GenresAPI from '../../api/genresApi';
+import * as booksBackupAPI from '../../api/booksBackupApi';
 import Header from '../Header';
 import Content from '../Content'
 
@@ -42,6 +43,8 @@ class App extends Component {
     }
 
 	componentDidMount() {
+		const genresBooks = GenresAPI.getBookGenres();
+		const booksBackup = booksBackupAPI.getBooksBackup();
 	    BookCatalogAPI.getBooksCatalog()
 	   .then(
 	      (result) => {
@@ -51,24 +54,22 @@ class App extends Component {
 	          originalBooks: this.mapIntoArray(result.catalog)
 	         });
 	      }, (error) => {
-	          this.setState({
-	            isLoaded: true,
-	            message: 'No Data'
-	          })
-	      }
+		  		this.setState({
+			        isLoaded: true,
+			        books: this.mapIntoArray(booksBackup),
+			        originalBooks: this.mapIntoArray(booksBackup)
+	   			})
+	      	}
 	    )
-	   	const genresBooks = GenresAPI.getBookGenres()
-	   		this.setState({
-            	genres: genresBooks
-        	});
+	   	this.setState({
+           	genres: genresBooks,
+           	maxID: this.mapIntoArray(booksBackup).length + 1
+        });
   	}
 
   	mapIntoArray(result) {
   		let array = []
   		Object.keys(result).filter(index => array.push(result[index]))
-  		this.setState({
-  			maxID: array.length
-  		})
   		return array
   	}
 
@@ -79,9 +80,6 @@ class App extends Component {
 			genres,
 			isLoaded,
 			error,
-			handleFilterChange,
-			handleDeleteBook,
-			handleAddGenre,
 			filtersChecked,
 			isFilterClicked
 		} = this.state;
@@ -135,7 +133,7 @@ class App extends Component {
 
 	handleDeleteBook(id) {
    	 	this.setState(prevState => {
-   	 		const remainingBooks = prevState.books.filter(book => book.id !== id)
+   	 		const remainingBooks = prevState.books.filter(book => parseInt(book.id) !== parseInt(id))
 			const newState = {
 				books: remainingBooks,
 				originalBooks: remainingBooks
@@ -145,22 +143,23 @@ class App extends Component {
 	}
 
 	handleAddBook(book) {
-		console.log('add Book');
-		console.log('book ', book);
-/*		this.setState(prevState => {
+		this.setState(prevState => {
 			const newBooksArray = prevState.books.concat(book)
+			const newMaxID = prevState.maxID + 1
 			const newState = {
 				books: newBooksArray,
-				originalBooks: newBooksArray
+				originalBooks: newBooksArray, 
+				maxID: newMaxID
 			}
 			return newState;
-		})*/
+		})
+
 	}
 
 	handleDeleteGenre(deletedGenre, bookID) {
 		this.setState(prevState => {
 			const newBooks = prevState.books.map(book => {
-				if (book.id === bookID) {
+				if (parseInt(book.id) === parseInt(bookID)) {
 					const genres = book.genre.filter(bookGenre => bookGenre !== deletedGenre);
 					book = {
 						...book,
@@ -181,7 +180,7 @@ class App extends Component {
 	handleAddGenre(addedGenre, bookID) {
 		this.setState(prevState => {
 			const newBooks = prevState.books.map(book => {
-				if (book.id === bookID) {
+				if (parseInt(book.id) === parseInt(bookID) && !book.genre.includes(addedGenre)) {
 					book.genre = book.genre.concat(addedGenre)
 					return book
 				} 
@@ -198,7 +197,7 @@ class App extends Component {
 	handleOnChangeEditBook(value, name, id) {
 		this.setState(prevState => {
 			const changedBook = prevState.books.map(book => {
-				if (book.id === id) {
+				if (parseInt(book.id) ===  parseInt(id)) {
 					book = {
 						...book,
 						[name]: value

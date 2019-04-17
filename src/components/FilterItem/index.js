@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './FilterItem.scss';
-import * as GenresAPI from '../../api/genresApi';
 
 class FilterItem extends Component {
 	render() {

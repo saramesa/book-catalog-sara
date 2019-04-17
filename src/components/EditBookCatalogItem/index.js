@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './EditBookCatalogItem.scss';
-import InputGenre from '../../components/InputGenre';
 import DropdownGenre from '../../components/DropdownGenre';
 import BadgeGenre from '../../components/BadgeGenre';
 
@@ -32,15 +31,13 @@ class EditBookCatalogItem extends Component {
   	const { 
 		books,
     genres,
-    handleDeleteBook,
     handleDeleteGenre,
-    handleAddGenre,
-    handleOnChangeEditBook
+    handleAddGenre
 	} = this.props;
     return (
     	<li>
       	{books.map(book => (
-      		<Row className="edit-container"key={book.id}>
+      		<Row className="edit-container" key={book.id}>
       			<Col className="col-3">
       				<img className="image-edit-book" alt="book-front" src={book.image}/>
       			</Col>

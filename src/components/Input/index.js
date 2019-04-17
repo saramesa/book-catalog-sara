@@ -4,7 +4,7 @@ class Input extends Component {
     render() {
     	const {
 			labelText,
-			style,
+			inputStyle,
 			type,
 			name,
 			example,
@@ -15,7 +15,7 @@ class Input extends Component {
     			<label>{labelText}</label>
     			<div>
     				<input
-	    				className={style}
+	    				className={inputStyle}
 						type={type}
 						name={name}
 						placeholder={example}

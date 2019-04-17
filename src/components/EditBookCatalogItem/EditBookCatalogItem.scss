@@ -1,5 +1,7 @@
 .image-edit-book {
-	height: 150px;
+    height: 150px;
+    width: 150px;
+    object-fit: contain;
 }
 
 .title-edit-book {
@@ -25,4 +27,5 @@
 
 .label-edit {
 	width: 100%;
+	margin-top: .5rem;
 }

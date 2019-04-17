@@ -11,14 +11,20 @@ class ModalContent extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			picture: "",
+			image: "",
+			currency: "€",
 			author: "",
+			date: "",
 			title: "",
 			price: "",
-			genre: []
+			id: this.props.maxID,
+			genre: [],
+			showDeleteButton: true
 		}
 		this.onChangeField = this.onChangeField.bind(this);
 		this.addGenreOnNewBook = this.addGenreOnNewBook.bind(this);
+		this.deleteGenreOnNewBook = this.deleteGenreOnNewBook.bind(this);
+		this.onAddBook = this.onAddBook.bind(this);
 	}
 
 	onChangeField(e) {
@@ -29,31 +35,52 @@ class ModalContent extends Component {
 		})
 	}
 
-	addGenreOnNewBook(e) {
-		console.log('addGenreOnNewBook')
-		console.log('e.currentTarget ', e.currentTarget)
-/*		this.setState(prevState => {
-			prevState.genre.push()
+	addGenreOnNewBook(genre) {
+		const genreArr = this.state.genre;
+		if (!genreArr.includes(genre)) {
+			genreArr.push(genre)
+			this.setState({
+				genre: genreArr
+			})
+		}
+	}
+
+	deleteGenreOnNewBook(genre) {
+		this.setState(prevState => {
+			const newGenres = prevState.genre.filter(bookGenre => bookGenre !== genre);
 			const newState = {
-				books: newBooks,
-				originalBooks: newBooks
+				genre: newGenres,
 			}
 			return newState;
-		})*/
+		})
+	}
+
+	onAddBook(e) {
+		e.preventDefault();
+		const {  handleBtnClick } = this.props;
+		const bookProps = this.state
+		const book = {
+			image: bookProps.image || "https://www.feriachilenadellibro.cl/pub/media/catalog/product/cache/1/image/200x256/e9c3970ab036de70892d86c6d221abfe/2/8/286517.jpg",
+			currency: bookProps.currency,
+			author: bookProps.author,
+			date: bookProps.date,
+			title: bookProps.title,
+			price: bookProps.price,
+			id: bookProps.id,
+			genre: bookProps.genre
+		}
+		handleBtnClick(book);
 	}
 
     render() {
     	const {
-			handleClose,
-			handleBtnClick,
-			handleAddGenre,
-			onChangeField, 
-			addGenreOnNewBook,
+			handleClose, 
+			handleDeleteGenre,
 			genres,
 			maxID
 		} = this.props;
     	return(
-    		<form onSubmit={handleBtnClick}>
+    		<div onSubmit={this.onAddBook}>
     			<Row>
     				<Col md={11}></Col>	
     				<Col md={1} className="text-right">
@@ -64,9 +91,9 @@ class ModalContent extends Component {
 		    		<Col md={12}>
 		    			<Input 
 		    				type="text"
-		    				name="picture"
-		    				labelText="Picture:"
-		    				style="title-edit-book"
+		    				name="image"
+		    				labelText="Image:"
+		    				inputStyle="title-edit-book"
 		    				handleInputChange={this.onChangeField}
 		    			/>
 					</Col>		    	
@@ -77,7 +104,7 @@ class ModalContent extends Component {
 		    				type="text"
 		    				name="author"
 		    				labelText="Author:"
-		    				style="title-edit-book"
+		    				inputStyle="title-edit-book"
 		    				handleInputChange={this.onChangeField}
 		    			/>
 					</Col>		    	
@@ -88,7 +115,7 @@ class ModalContent extends Component {
 		    				type="text"
 		    				name="title"
 		    				labelText="Title:"
-		    				style="title-edit-book"
+		    				inputStyle="title-edit-book"
 		    				handleInputChange={this.onChangeField}
 		    			/>
 					</Col>	    		
@@ -99,10 +126,20 @@ class ModalContent extends Component {
 		    				type="number"
 		    				name="price"
 		    				labelText="Price:"
-		    				style="title-edit-book"
+		    				inputStyle="title-edit-book"
 		    				handleInputChange={this.onChangeField}
 		    			/>
 					</Col>	    		
+	    		</Row>
+	    		<Row>
+	    			<Col>
+	    				<BadgeGenre 
+                      		variant="secondary" 
+                      		genres={this.state.genre}
+                      		showDeleteButton={this.state.showDeleteButton}
+                      		handleDeleteGenre={this.deleteGenreOnNewBook}
+		    			/>
+	    			</Col>
 	    		</Row>
 	    		<Row>
 	    			<Col>
@@ -117,12 +154,14 @@ class ModalContent extends Component {
 	    			<Col md={12} className="text-right">
 	    				<Button
 	    					type="submit"
-	    					style="filter-item"
-	    				>Aceptar
+	    					buttonStyle="filter-item"
+	    					handleBtnClick={(event) => { this.onAddBook(event); handleClose()}}
+	    				>
+	    				Aceptar
 	    				</Button>
 					</Col>	    		
 	    		</Row>
-	        </form>
+	        </div>
     	)
 	}
 }

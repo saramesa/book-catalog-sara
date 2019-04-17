@@ -8,9 +8,9 @@ class Modal extends Component {
 			handleClose,
 			handleBtnClick,
 			handleAddGenre,
+			handleDeleteGenre,
 			genres,
 			maxID
-
 		} = this.props;
     	return(
 	    	<section className="modal-main">
@@ -18,6 +18,7 @@ class Modal extends Component {
 	    			handleClose = {handleClose}
 	    			handleBtnClick = {handleBtnClick}
 	    			handleAddGenre = {handleAddGenre}
+	    			handleDeleteGenre = {handleDeleteGenre}
 	    			genres = {genres}
 	    			maxID = {maxID}
 	    		/>

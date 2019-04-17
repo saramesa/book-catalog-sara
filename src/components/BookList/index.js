@@ -14,7 +14,6 @@ class BookList extends Component {
       isLoaded,
       error
     } = this.props;
-
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
@@ -26,11 +25,11 @@ class BookList extends Component {
         <Col className="col-md-10"><ul className="book-list">
           {books.map(book => (
           <li className="book-list-item" key={book.id}>
-                <Row>
-                  <Col className="book__card-image-container">
-                    <Image className="book__card-image" alt="image" rounded src={book.image} />
-                  </Col>
-                </Row>
+            <Row>
+              <Col className="book__card-image-container">
+                <Image className="book__card-image" alt="image" rounded src={book.image} />
+              </Col>
+            </Row>
                 <Row>
                   <Col>
                     <div className="book-card-title">{book.title}</div>
@@ -52,8 +51,8 @@ class BookList extends Component {
                   <Col>
                     <BadgeGenre 
                       variant="secondary" 
-                      genres={book.genre}>
-                    </BadgeGenre>
+                      genres={book.genre}
+                    />
                   </Col>
                 </Row>    
             </li>        

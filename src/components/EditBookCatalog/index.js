@@ -10,7 +10,6 @@ import './EditBookCatalog.scss';
 class EditBookCatalog extends Component {
 	constructor(props) {
 		super(props);
-		this.onAddBook = this.onAddBook.bind(this);
 		this.showModal = this.showModal.bind(this);
 		this.state = {
 			showModal: false
@@ -21,18 +20,6 @@ class EditBookCatalog extends Component {
 		this.setState({
 			showModal: true
 		})
-	}
-
-	onAddBook(e) {
-		const {  handleAddBook } = this.props;
-		const formData = new FormData(e.target)
-   		const book = {}
-   		e.preventDefault()
-
-   		for (let entry of formData.entries()) {
-       		book[entry[0]] = entry[1]
-   		}
-		handleAddBook(book);
 	}
 
 	hideModal = () => {
@@ -48,6 +35,7 @@ class EditBookCatalog extends Component {
 			handleOnChangeEditBook,
 			handleDeleteGenre,
 			handleAddGenre,
+			handleAddBook,
 			maxID
 		} = this.props;
 	    return (
@@ -59,7 +47,7 @@ class EditBookCatalog extends Component {
 		    			<div className="add-new-book-container">
 		    				<Button	
 		    					type = "button"
-		    					style = "filter-item"
+		    					buttonStyle = "filter-item"
 		    					handleBtnClick={this.showModal}
 		    				> 	Add New Book
 		    					<span className="add-new-book-icon"><i className="fas fa-plus-circle"></i></span>
@@ -75,10 +63,11 @@ class EditBookCatalog extends Component {
 		      			/>	
 		      			{ this.state.showModal ? <Modal 
 		      					handleClose = {this.hideModal} 
-		      					handleBtnClick = {this.onAddBook}
+		      					handleBtnClick = {handleAddBook}
 		      					handleAddGenre = {handleAddGenre}
 		      					genres = {genres}
 		      					maxID = {maxID}
+		      					handleDeleteGenre = {handleDeleteGenre}
 		      					/> : null }
 	      			</Col>
 		    		<Col md={2}></Col>
