@@ -51,7 +51,7 @@ class Content extends Component {
 				<Switch>
 					<Route
 						exact
-						path="/catalog"
+						path="/"
 						render={() => catalogContent}
 					/>
 					<Route
