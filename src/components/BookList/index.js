@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import './BookList.scss';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -6,20 +7,14 @@ import Image from 'react-bootstrap/Image';
 import Loader from '../../components/Loader';
 import BadgeGenre from '../../components/BadgeGenre';
 
-class BookList extends Component {
 
-  render() {
-    const {
-      books,
-      isLoaded,
-      error
-    } = this.props;
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-      return <Loader />
-    } else {
-      return (
+const BookList = ({ books, isLoaded, error }) => {
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  } else if (!isLoaded) { 
+    return <Loader />
+  } else {
+    return (
       <Row>
         <Col className="col-md-1"></Col>
         <Col className="col-md-10"><ul className="book-list">
@@ -60,11 +55,16 @@ class BookList extends Component {
         </ul></Col>
         <Col className="col-md-1"></Col>
       </Row>
-        
-      );
-    }
+    )
   }
+}
 
+BookList.propTypes = {
+  books: PropTypes.arrayOf(
+    PropTypes.object
+  ).isRequired,
+  isLoaded: PropTypes.bool,
+  error: PropTypes.bool,
 }
 
 export default BookList;

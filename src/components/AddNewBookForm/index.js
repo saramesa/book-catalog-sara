@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import './ModalContent.scss';
+import './AddNewBookForm.scss';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import DropdownGenre from '../../components/DropdownGenre';
 import BadgeGenre from '../../components/BadgeGenre';
 
-class ModalContent extends Component {
+class AddNewBookForm extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -75,7 +75,6 @@ class ModalContent extends Component {
     render() {
     	const {
 			handleClose, 
-			handleDeleteGenre,
 			genres,
 			maxID
 		} = this.props;
@@ -93,7 +92,7 @@ class ModalContent extends Component {
 		    				type="text"
 		    				name="image"
 		    				labelText="Image:"
-		    				inputStyle="title-edit-book"
+		    				inputStyle="label-edit"
 		    				handleInputChange={this.onChangeField}
 		    			/>
 					</Col>		    	
@@ -104,7 +103,7 @@ class ModalContent extends Component {
 		    				type="text"
 		    				name="author"
 		    				labelText="Author:"
-		    				inputStyle="title-edit-book"
+		    				inputStyle="label-edit"
 		    				handleInputChange={this.onChangeField}
 		    			/>
 					</Col>		    	
@@ -115,7 +114,7 @@ class ModalContent extends Component {
 		    				type="text"
 		    				name="title"
 		    				labelText="Title:"
-		    				inputStyle="title-edit-book"
+		    				inputStyle="label-edit"
 		    				handleInputChange={this.onChangeField}
 		    			/>
 					</Col>	    		
@@ -126,7 +125,7 @@ class ModalContent extends Component {
 		    				type="number"
 		    				name="price"
 		    				labelText="Price:"
-		    				inputStyle="title-edit-book"
+		    				inputStyle="label-edit"
 		    				handleInputChange={this.onChangeField}
 		    			/>
 					</Col>	    		
@@ -145,7 +144,7 @@ class ModalContent extends Component {
 	    			<Col>
 	    				<DropdownGenre 
       						genres = {genres}
-      						bookid = {maxID}
+      						bookid = {(maxID).toString()}
       						handleAddGenre = {this.addGenreOnNewBook}
 		    			/>
 	    			</Col>
@@ -167,4 +166,4 @@ class ModalContent extends Component {
 }
 
 
-export default ModalContent;
+export default AddNewBookForm;

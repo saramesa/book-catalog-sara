@@ -28,6 +28,7 @@ class App extends Component {
 		this.handleAddBook = this.handleAddBook.bind(this);
 		this.handleDeleteGenre = this.handleDeleteGenre.bind(this);
 		this.handleAddGenre = this.handleAddGenre.bind(this);
+		this.setStateFilters = this.setStateFilters.bind(this);
 	}
 
    	openModalHandler = () => {
@@ -90,7 +91,7 @@ class App extends Component {
                     show = {this.state.isShowing}
                     close = {this.closeModalHandler}
 					books = {books}
-					maxID = {maxID} 
+					maxID = {(maxID).toString()} 
 					genres = {genres}
 					isLoaded = {isLoaded}
 					error = {error}
@@ -107,28 +108,30 @@ class App extends Component {
 		);
 	}
 
-	handleFilterChange(e) {
+	handleFilterChange(genre) {
 		const { filtersChecked, originalBooks } = this.state;
-		const id = e.target.id;
-		if (!filtersChecked.includes(id)) {
-			filtersChecked.push(id)
+		if (!filtersChecked.includes(genre)) {
+			filtersChecked.push(genre)
 		} else {
-			const index = filtersChecked.indexOf(id);
+			const index = filtersChecked.indexOf(genre);
 			filtersChecked.splice(index, 1)
 		}
-		const found = originalBooks.filter(book => 
-			book.genre.some(genre => 
-				filtersChecked.includes(genre))
-		)
-		if (found.length !== 0) {
-			this.setState({
-      			books: found
-   	 		})
+		
+		if (filtersChecked.length !== 0) {
+			const found = originalBooks.filter(book => 
+				book.genre.some(genre => 
+					filtersChecked.includes(genre))
+			)
+			this.setStateFilters(found)
 		} else {
-			this.setState({
-      			books: originalBooks
-   	 		})
+			this.setStateFilters(originalBooks)
 		}
+	}
+
+	setStateFilters(foundBooks) {
+		this.setState({
+      		books: foundBooks
+   	 	})
 	}
 
 	handleDeleteBook(id) {

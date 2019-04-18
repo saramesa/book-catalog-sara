@@ -1,32 +1,28 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 
-class Input extends Component {
-    render() {
-    	const {
-			labelText,
-			inputStyle,
-			type,
-			name,
-			example,
-			handleInputChange
-		} = this.props;
-    	return(
-    		<Fragment>
-    			<label>{labelText}</label>
-    			<div>
-    				<input
-	    				className={inputStyle}
-						type={type}
-						name={name}
-						placeholder={example}
-						onChange={handleInputChange}
-					/>
-    			</div>
-    			
-    		</Fragment>
-    	)
-	}
+const Input = ({ labelText, inputStyle, type, name, handleInputChange}) => {
+    return(
+    	<Fragment>
+    		<label>{labelText}</label>
+    		<div>
+    			<input
+	   				className={inputStyle}
+					type={type}
+					name={name}
+					onChange={handleInputChange}
+				/>
+    		</div>
+    	</Fragment>
+    )
 }
 
+Input.propTypes = {
+	labelText: PropTypes.string.isRequired,
+	inputStyle: PropTypes.string,
+	type: PropTypes.string,
+	name: PropTypes.string,
+	handleInputChange: PropTypes.func.isRequired,
+}
 
 export default Input;

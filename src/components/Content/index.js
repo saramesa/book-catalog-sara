@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Filters from '../../components/Filters';
 import BookList from '../../components/BookList';
 import EditBookCatalog from '../../components/EditBookCatalog';
@@ -42,7 +43,6 @@ class Content extends Component {
 					books = {books} 
 					isLoaded = {isLoaded}
 					error = {error}
-
 				/>
 			</Fragment>
 		);
@@ -77,6 +77,30 @@ class Content extends Component {
 			</main>
 		);
 	}
+}
+
+Content.propTypes = {
+	show: PropTypes.bool,
+	close: PropTypes.func,
+	books: PropTypes.arrayOf(
+    	PropTypes.object
+  	).isRequired,
+	maxID: PropTypes.string,
+	genres: PropTypes.arrayOf(
+    	PropTypes.string
+  	).isRequired,
+	isLoaded: PropTypes.bool,
+	error: PropTypes.bool,
+	handleFilterChange: PropTypes.func,
+	handleDeleteBook: PropTypes.func,
+	handleOnChangeEditBook: PropTypes.func,
+	handleAddBook: PropTypes.func,
+	handleDeleteGenre: PropTypes.func,
+	handleAddGenre: PropTypes.func,
+	filtersChecked: PropTypes.arrayOf(
+    	PropTypes.string
+  	).isRequired,
+	isFilterClicked: PropTypes.bool
 }
 
 export default Content;

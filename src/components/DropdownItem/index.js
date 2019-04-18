@@ -1,33 +1,26 @@
-import React, { Component  } from 'react';
+import React from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
+import PropTypes from 'prop-types';
 
+const onSelectGenre = (genre, id, handleAddGenre) => {
+  handleAddGenre(genre, id)
+};
 
-class DropdownItem extends Component {
-  constructor(props) {
-    super(props);
-    this.onSelectGenre = this.onSelectGenre.bind(this);
-  }
-
-  onSelectGenre(e) {
-    const genre = e.currentTarget.name;
-    const id = e.currentTarget.id;
-    const { handleAddGenre } = this.props;
-    handleAddGenre(genre, id)
-  }
-
-  render() {
-  	const { 
-    genres,
-    bookid
-	} = this.props;
+const DropdownItem = ({genres, bookid, handleAddGenre}) => {
     return (
       genres.map(genre => (
-        <Dropdown.Item id={bookid} name={genre} key={genre} onClick={this.onSelectGenre}>
+        <Dropdown.Item id={bookid} name={genre} key={genre} onClick={onSelectGenre.bind(this, genre, bookid, handleAddGenre)}>
           {genre}
         </Dropdown.Item>
       ))
     );
   }
+
+DropdownItem.propTypes = {
+  genres: PropTypes.arrayOf(
+    PropTypes.string
+  ).isRequired,
+  bookid: PropTypes.string,
 }
 
 export default DropdownItem;

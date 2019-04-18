@@ -1,31 +1,32 @@
-import React, { Component } from 'react';
-import ModalContent from '../ModalContent';
+import React from 'react';
+import PropTypes from 'prop-types';
+import AddNewBookForm from '../AddNewBookForm';
 import './Modal.scss';
 
-class Modal extends Component {
-    render() {
-    	const {
-			handleClose,
-			handleBtnClick,
-			handleAddGenre,
-			handleDeleteGenre,
-			genres,
-			maxID
-		} = this.props;
-    	return(
-	    	<section className="modal-main">
-	    		<ModalContent 
-	    			handleClose = {handleClose}
-	    			handleBtnClick = {handleBtnClick}
-	    			handleAddGenre = {handleAddGenre}
-	    			handleDeleteGenre = {handleDeleteGenre}
-	    			genres = {genres}
-	    			maxID = {maxID}
-	    		/>
-	        </section>
-    	)
-	}
+const Modal = ({handleClose, handleBtnClick, handleAddGenre, handleDeleteGenre, genres, maxID}) => {
+    return(
+	   	<section className="modal-main">
+	   		<AddNewBookForm 
+	   			handleClose = {handleClose}
+	   			handleBtnClick = {handleBtnClick}
+	   			handleAddGenre = {handleAddGenre}
+	   			handleDeleteGenre = {handleDeleteGenre}
+	   			genres = {genres}
+	   			maxID = {maxID}
+	   		/>
+	    </section>
+    )
 }
 
+Modal.propTypes = {
+	genres: PropTypes.arrayOf(
+    	PropTypes.string
+  	),
+  	handleClose: PropTypes.func, 
+	handleBtnClick: PropTypes.func,
+	handleAddGenre: PropTypes.func,
+	handleDeleteGenre: PropTypes.func,
+	maxID: PropTypes.string 
+}
 
 export default Modal;

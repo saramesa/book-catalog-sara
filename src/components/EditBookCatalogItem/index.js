@@ -37,11 +37,19 @@ class EditBookCatalogItem extends Component {
     return (
     	<li>
       	{books.map(book => (
-      		<Row className="edit-container" key={book.id}>
-      			<Col className="col-3">
-      				<img className="image-edit-book" alt="book-front" src={book.image}/>
-      			</Col>
-      			<Col className="col-8">
+      		<div className="edit-container" key={book.id}>
+            <Row>            
+              <Col className="col-12 fa-times-container">
+                <i className="far fa-times-circle fa-times-custom" id={book.id} onClick={this.onDeleteBook}></i>
+              </Col>
+            </Row>
+            <Row>
+        			<Col className="col-12">
+        				<img className="image-edit-book" alt="book-front" src={book.image}/>
+        			</Col>
+            </Row>
+            <Row>
+      			<Col className="col-12">
       				<label className="label-edit">Title:</label>
       				<input className="title-edit-book" type="text" id={book.id} name="title" value={book.title} onChange={this.onBookUpdate} />
       				<label className="label-edit">Price:</label>
@@ -49,7 +57,7 @@ class EditBookCatalogItem extends Component {
       				<label className="label-edit">Genres:</label>
               <BadgeGenre 
                 genres={book.genre}
-                bookid={book.id}
+                bookid={(book.id).toString()}
                 showDeleteButton={this.state.showDeleteButton}
                 handleDeleteGenre={handleDeleteGenre}
               />
@@ -58,11 +66,9 @@ class EditBookCatalogItem extends Component {
                 genres={genres}
                 handleAddGenre={handleAddGenre}
               />
-      			</Col>
-      			<Col className="col-1 fa-times-container">
-      				<i className="far fa-times-circle fa-times-custom" id={book.id} onClick={this.onDeleteBook}></i>
-      			</Col>     			
-			    </Row>
+      			</Col> 
+            </Row> 			
+			    </div>
       	))} 
       </li>
       );
