@@ -6,6 +6,7 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 import DropdownGenre from '../../components/DropdownGenre';
 import BadgeGenre from '../../components/BadgeGenre';
+import config from '../../config/config';
 
 class AddNewBookForm extends Component {
 	constructor(props) {
@@ -60,7 +61,7 @@ class AddNewBookForm extends Component {
 		const {  handleBtnClick } = this.props;
 		const bookProps = this.state
 		const book = {
-			image: bookProps.image || "https://www.feriachilenadellibro.cl/pub/media/catalog/product/cache/1/image/200x256/e9c3970ab036de70892d86c6d221abfe/2/8/286517.jpg",
+			image: bookProps.image || config.DEFAULT_PICTURE,
 			currency: bookProps.currency,
 			author: bookProps.author,
 			date: bookProps.date,

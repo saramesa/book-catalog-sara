@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import logo from '../../assets/beezy.jpg';
+import logo from '../../assets/books-logo.png';
 import './Logo.scss';
 
 const Logo = ({ size }) => {
