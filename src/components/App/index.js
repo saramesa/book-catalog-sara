@@ -110,17 +110,21 @@ class App extends Component {
 
 	handleFilterChange(genre) {
 		const { filtersChecked, originalBooks } = this.state;
-		if (!filtersChecked.includes(genre)) {
-			filtersChecked.push(genre)
-		} else {
-			const index = filtersChecked.indexOf(genre);
+		if (filtersChecked.indexOf(genre) >= 0) {
+			console.log('existe')
+						const index = filtersChecked.indexOf(genre);
 			filtersChecked.splice(index, 1)
+		} else {
+			console.log('no existe')
+
+			filtersChecked.push(genre)
 		}
-		
+
 		if (filtersChecked.length !== 0) {
 			const found = originalBooks.filter(book => 
 				book.genre.some(genre => 
-					filtersChecked.includes(genre))
+
+					filtersChecked.indexOf(genre) >= 0)
 			)
 			this.setStateFilters(found)
 		} else {
@@ -183,7 +187,7 @@ class App extends Component {
 	handleAddGenre(addedGenre, bookID) {
 		this.setState(prevState => {
 			const newBooks = prevState.books.map(book => {
-				if (parseInt(book.id) === parseInt(bookID) && !book.genre.includes(addedGenre)) {
+				if (parseInt(book.id) === parseInt(bookID) && book.genre.indexOf(addedGenre) === -1) {
 					book.genre = book.genre.concat(addedGenre)
 					return book
 				} 

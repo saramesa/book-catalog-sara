@@ -9,7 +9,7 @@ const onFilterChange = (genre, handleFilterChange) => {
 const FilterItem = ({handleFilterChange, filtersChecked, genres}) => {
 	return (
 	  	genres.map(genre => (
-	    	<span className="filter-item" key={genre} style={{backgroundColor: filtersChecked.includes(genre) ? '#2195BA' : 'white'}} id={genre} onClick={onFilterChange.bind(this, genre, handleFilterChange)}>{genre}</span>
+	    	<span className="filter-item" key={genre} style={{backgroundColor: filtersChecked.indexOf(genre) >= 0 ? '#2195BA' : 'white'}} id={genre} onClick={onFilterChange.bind(this, genre, handleFilterChange)}>{genre}</span>
 	 	))
 	);
 }

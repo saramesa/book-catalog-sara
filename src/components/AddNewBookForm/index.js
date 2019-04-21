@@ -38,7 +38,7 @@ class AddNewBookForm extends Component {
 
 	addGenreOnNewBook(genre) {
 		const genreArr = this.state.genre;
-		if (!genreArr.includes(genre)) {
+		if (genreArr.indexOf(genre) === -1) {
 			genreArr.push(genre)
 			this.setState({
 				genre: genreArr

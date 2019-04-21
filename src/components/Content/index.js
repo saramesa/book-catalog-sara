@@ -47,7 +47,7 @@ class Content extends Component {
 			</Fragment>
 		);
 		return (
-			<main className="app-content">
+			<div className="app-content">
 				<Switch>
 					<Route
 						exact
@@ -74,7 +74,7 @@ class Content extends Component {
 						}}
 					/>
 				</Switch>
-			</main>
+			</div>
 		);
 	}
 }
