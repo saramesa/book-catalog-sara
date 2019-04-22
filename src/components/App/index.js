@@ -9,11 +9,11 @@ import Content from '../Content'
 class App extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
+	this.state = {
 			isLoaded: false,
       		books: [],
       		originalBooks: [],
-      		error: false,
+    		error: false,
       		filtersChecked: [],
       		isFilterClicked: false,
       		isShowing: false,
