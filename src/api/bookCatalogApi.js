@@ -1,6 +1,6 @@
-import config from '../config/config';
+import config from "../config/config";
 
-export function getBooksCatalog() {
-  	return fetch(config.API_URL)
-    .then( (response) => response.json() );
+export default async function getBooksCatalog() {
+	const response = await fetch(config.API_URL);
+	return response.json();
 }

@@ -1,4 +1,1 @@
-export const getBookGenres = () => {
-	return ["novel", "psychology", "cinema", "fiction", "drama"]
-}
-	
+export default ["novel", "psychology", "cinema", "fiction", "drama"];
